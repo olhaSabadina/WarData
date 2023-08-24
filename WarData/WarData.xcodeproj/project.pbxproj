@@ -22,6 +22,9 @@
 		201ABCFA2A96100900A654C2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201ABCF92A96100900A654C2 /* NetworkManager.swift */; };
 		201ABCFD2A96126C00A654C2 /* WarDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */; };
 		201ABD002A9625D200A654C2 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 201ABCFF2A9625D200A654C2 /* main.json */; };
+		9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9CB262A9790D5009F1620 /* Resource.swift */; };
+		9CE9CB2A2A9791F6009F1620 /* equipment.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB282A9791F5009F1620 /* equipment.json */; };
+		9CE9CB2B2A9791F6009F1620 /* personnel.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB292A9791F6009F1620 /* personnel.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		201ABCF92A96100900A654C2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarDataErrors.swift; sourceTree = "<group>"; };
 		201ABCFF2A9625D200A654C2 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
+		9CE9CB262A9790D5009F1620 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		9CE9CB282A9791F5009F1620 /* equipment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = equipment.json; sourceTree = "<group>"; };
+		9CE9CB292A9791F6009F1620 /* personnel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = personnel.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				201ABCE62A951C9700A654C2 /* ImageConstants.swift */,
+				9CE9CB262A9790D5009F1620 /* Resource.swift */,
 				201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */,
 			);
 			path = Enums;
@@ -161,6 +168,8 @@
 		201ABCFE2A96258100A654C2 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				9CE9CB282A9791F5009F1620 /* equipment.json */,
+				9CE9CB292A9791F6009F1620 /* personnel.json */,
 				201ABCFF2A9625D200A654C2 /* main.json */,
 			);
 			path = JSON;
@@ -224,8 +233,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE9CB2A2A9791F6009F1620 /* equipment.json in Resources */,
 				201ABD002A9625D200A654C2 /* main.json in Resources */,
 				201ABCD92A95119B00A654C2 /* LaunchScreen.storyboard in Resources */,
+				9CE9CB2B2A9791F6009F1620 /* personnel.json in Resources */,
 				201ABCD62A95119B00A654C2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */,
 				201ABCF72A960EC000A654C2 /* MainData.swift in Sources */,
 				201ABCFD2A96126C00A654C2 /* WarDataErrors.swift in Sources */,
 				201ABCF42A9604F500A654C2 /* EquipmentVC+CollectionView.swift in Sources */,
