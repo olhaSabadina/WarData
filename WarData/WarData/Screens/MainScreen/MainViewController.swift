@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     let mainTable = UITableView()
     let dateLabel = UILabel()
     let dayLabel = UILabel()
+    var mainData: MainData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +28,8 @@ class MainViewController: UIViewController {
     }
     
     func getMainData() {
-        networkManager.fetchData { result in
-            switch result {
-                
-            case .success(let data):
-                print(data?.last?.date)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        mainData = networkManager.fetchData(resource: .main, of: MainData.self)
+        print(mainData?.count)
     }
     
 

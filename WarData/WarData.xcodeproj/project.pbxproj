@@ -135,7 +135,7 @@
 				201ABCD02A95119900A654C2 /* MainViewController.swift */,
 				201ABCE32A951AA600A654C2 /* MainVC+UIConfig.swift */,
 				201ABCEA2A9522B300A654C2 /* MainVC+Table.swift */,
-				201ABCEC2A952DE300A654C2 /* MainTableCell.swift */,
+				9CE9CB2C2A9795C8009F1620 /* Cell */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -173,6 +173,14 @@
 				201ABCFF2A9625D200A654C2 /* main.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		9CE9CB2C2A9795C8009F1620 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				201ABCEC2A952DE300A654C2 /* MainTableCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
