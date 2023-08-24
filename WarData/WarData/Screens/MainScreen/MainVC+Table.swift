@@ -26,17 +26,29 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - TableView Delegate, DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 16
+        return rowData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainTableCell.cellID, for: indexPath) as? MainTableCell else {return UITableViewCell()}
+        cell.rowData = rowData[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         
+        tableView.deselectRow(at: indexPath, animated: true)
+       
+        var detailVC: UIViewController?
+        let titleItem = MainTableTitles.allCases[indexPath.row]
+        switch titleItem {
+        case .personnel: detailVC = HumanViewController()
+        case .tank: detailVC = DetailViewController()
+        default: break
+        }
+        
+        guard let detailVC = detailVC else {return}
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }

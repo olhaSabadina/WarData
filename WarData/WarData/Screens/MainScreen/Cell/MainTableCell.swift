@@ -15,6 +15,11 @@ class MainTableCell: UITableViewCell {
     let numberOfLossesLabel = UILabel()
     let imageEquipmentImageView = UIImageView()
     var stack = UIStackView()
+    var rowData: RowData? {
+        didSet{
+            configureCell()
+        }
+    }
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,16 +54,25 @@ class MainTableCell: UITableViewCell {
     
     func setStackLables() {
         nameEquipmentLabel.textAlignment = .right
-        nameEquipmentLabel.font = .boldSystemFont(ofSize: 20)
-        nameEquipmentLabel.text = "tank"
+        nameEquipmentLabel.numberOfLines = 2
+        nameEquipmentLabel.adjustsFontSizeToFitWidth = true
+        nameEquipmentLabel.font = .boldSystemFont(ofSize: 18)
+        nameEquipmentLabel.shadowOffset = .init(width: 0.5, height: 0.8)
+        nameEquipmentLabel.shadowColor = .systemYellow
+        nameEquipmentLabel.textColor = .systemOrange
         
+        numberOfLossesLabel.adjustsFontSizeToFitWidth = true
         numberOfLossesLabel.textAlignment = .left
-        numberOfLossesLabel.font = .boldSystemFont(ofSize: 18)
-        numberOfLossesLabel.text = "10"
+        numberOfLossesLabel.textColor = .systemYellow
+        numberOfLossesLabel.font = UIFont(name: "DS-Digital-Bold", size: 30)
+    }
+    
+    func configureCell() {
+        nameEquipmentLabel.text = rowData?.title
+        numberOfLossesLabel.text = rowData?.value
     }
     
     func setStackImage() {
-//        imageEquipmentImageView.image =
         imageEquipmentImageView.backgroundColor = .red
     }
     
@@ -70,6 +84,7 @@ class MainTableCell: UITableViewCell {
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
+            imageEquipmentImageView.heightAnchor.constraint(equalToConstant: 44),
             imageEquipmentImageView.widthAnchor.constraint(equalTo: imageEquipmentImageView.heightAnchor),
             imageEquipmentImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])

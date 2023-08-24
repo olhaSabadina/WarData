@@ -7,14 +7,8 @@
 
 import Foundation
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let mainData = try? JSONDecoder().decode(MainData.self, from: jsonData)
+typealias MainData = [MainDatum]
 
-import Foundation
-
-// MARK: - MainDatum
 struct MainDatum: Codable {
     let date: String
     let day, aircraft, helicopter, tank: Int
@@ -24,7 +18,7 @@ struct MainDatum: Codable {
     let specialEquipment, mobileSRBMSystem: Int?
     let greatestLossesDirection: String?
     let vehiclesAndFuelTanks, cruiseMissiles: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case date, day, aircraft, helicopter, tank
         case apc = "APC"
@@ -41,7 +35,42 @@ struct MainDatum: Codable {
         case vehiclesAndFuelTanks = "vehicles and fuel tanks"
         case cruiseMissiles = "cruise missiles"
     }
+    
+    var mainDatumArrayForShow: [String?] {
+        var result: [String?] = []
+        for i in MainTableTitles.allCases {
+            var value: String? = ""
+            switch i {
+            case .personnel:
+                value = ""
+            case .aircraft:
+                value = "\(aircraft)"
+            case .helicopter:
+                value = String(helicopter)
+            case .tank:
+                value = String(tank)
+            case .apc:
+                value = String(apc)
+            case .fieldArtillery:
+                value = String(fieldArtillery)
+            case .mrl:
+                value = String(mrl)
+            case .drone:
+                value = String(drone)
+            case .navalShip:
+                value = String(navalShip)
+            case .antiAircraftWarfare:
+                value = String(antiAircraftWarfare)
+            case .specialEquipment:
+                value = specialEquipment != nil ? "\(specialEquipment ?? 0)" : "don't receive"
+            case .vehiclesAndFuelTanks:
+                value = vehiclesAndFuelTanks != nil ? "\(vehiclesAndFuelTanks ?? 0)" : "don't receive"
+            case .cruiseMissiles:
+                value = cruiseMissiles != nil ? "\(cruiseMissiles ?? 0)" : "don't receive"
+            }
+            result.append(value)
+        }
+        return result
+    }
+    
 }
-
-typealias MainData = [MainDatum]
-

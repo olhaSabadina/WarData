@@ -26,15 +26,16 @@ extension MainViewController {
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
-            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            dateLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            dateLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 20),
+            dateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            dayLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5),
+            dayLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 15),
             dayLabel.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
             dayLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
             
-            mainTable.topAnchor.constraint(equalTo: dayLabel.bottomAnchor, constant: 10),
+            mainTable.topAnchor.constraint(equalTo: dayLabel.bottomAnchor, constant: 15),
             mainTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mainTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
@@ -45,7 +46,6 @@ extension MainViewController {
     
     private func setupView() {
         view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.isHidden = true
     }
      
     private func setBackgroundImageView() {
@@ -55,19 +55,22 @@ extension MainViewController {
     }
     
     private func setDateLabel() {
+        dateLabel = PaddingLabel(withInsets: 5, 5, 15, 15)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = .boldSystemFont(ofSize: 25)
-        dateLabel.numberOfLines = 0
         dateLabel.textAlignment = .center
-        dateLabel.text = "Total russian losses on\n23.45.78889"
+        dateLabel.textColor = .white
         view.addSubview(dateLabel)
     }
     
     private func setDayLabel() {
+        dayLabel = PaddingLabel(withInsets: 3, 3, 10, 10)
         dayLabel.translatesAutoresizingMaskIntoConstraints = false
-        dayLabel.font = .boldSystemFont(ofSize: 20)
+        dayLabel.font = .boldSystemFont(ofSize: 18)
+        dayLabel.shadowColor = .lightGray
+        dayLabel.shadowOffset = .init(width: 0.4, height: 0.6)
         dayLabel.textAlignment = .center
-        dayLabel.text = "543 day of wars"
+        dayLabel.textColor = .lightGray
         view.addSubview(dayLabel)
     }
     

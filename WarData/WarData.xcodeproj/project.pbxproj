@@ -22,6 +22,16 @@
 		201ABCFA2A96100900A654C2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201ABCF92A96100900A654C2 /* NetworkManager.swift */; };
 		201ABCFD2A96126C00A654C2 /* WarDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */; };
 		201ABD002A9625D200A654C2 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = 201ABCFF2A9625D200A654C2 /* main.json */; };
+		2042BB092A97A70400B3CF7F /* EquipmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB082A97A70400B3CF7F /* EquipmentData.swift */; };
+		2042BB0B2A97A9D400B3CF7F /* PersonnelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0A2A97A9D400B3CF7F /* PersonnelData.swift */; };
+		2042BB0D2A97AC9800B3CF7F /* MainTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0C2A97AC9800B3CF7F /* MainTableTitles.swift */; };
+		2042BB0F2A97B26700B3CF7F /* PrepareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0E2A97B26700B3CF7F /* PrepareData.swift */; };
+		2042BB122A97E61800B3CF7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB112A97E61800B3CF7F /* UIView + Extensions.swift */; };
+		2042BB142A97E8A500B3CF7F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB132A97E8A500B3CF7F /* PaddingLabel.swift */; };
+		2042BB172A97F13300B3CF7F /* HumanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB162A97F13300B3CF7F /* HumanViewController.swift */; };
+		2042BB1A2A97F67C00B3CF7F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB192A97F67C00B3CF7F /* DetailViewController.swift */; };
+		2042BB1D2A97FDEC00B3CF7F /* DS-DIGI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2042BB1C2A97FDEC00B3CF7F /* DS-DIGI.ttf */; };
+		2042BB1F2A98015300B3CF7F /* DS-DIGIB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2042BB1E2A98015300B3CF7F /* DS-DIGIB.ttf */; };
 		9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9CB262A9790D5009F1620 /* Resource.swift */; };
 		9CE9CB2A2A9791F6009F1620 /* equipment.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB282A9791F5009F1620 /* equipment.json */; };
 		9CE9CB2B2A9791F6009F1620 /* personnel.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB292A9791F6009F1620 /* personnel.json */; };
@@ -45,6 +55,16 @@
 		201ABCF92A96100900A654C2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarDataErrors.swift; sourceTree = "<group>"; };
 		201ABCFF2A9625D200A654C2 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
+		2042BB082A97A70400B3CF7F /* EquipmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentData.swift; sourceTree = "<group>"; };
+		2042BB0A2A97A9D400B3CF7F /* PersonnelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonnelData.swift; sourceTree = "<group>"; };
+		2042BB0C2A97AC9800B3CF7F /* MainTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableTitles.swift; sourceTree = "<group>"; };
+		2042BB0E2A97B26700B3CF7F /* PrepareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareData.swift; sourceTree = "<group>"; };
+		2042BB112A97E61800B3CF7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		2042BB132A97E8A500B3CF7F /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		2042BB162A97F13300B3CF7F /* HumanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanViewController.swift; sourceTree = "<group>"; };
+		2042BB192A97F67C00B3CF7F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2042BB1C2A97FDEC00B3CF7F /* DS-DIGI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGI.ttf"; sourceTree = "<group>"; };
+		2042BB1E2A98015300B3CF7F /* DS-DIGIB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.ttf"; sourceTree = "<group>"; };
 		9CE9CB262A9790D5009F1620 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		9CE9CB282A9791F5009F1620 /* equipment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = equipment.json; sourceTree = "<group>"; };
 		9CE9CB292A9791F6009F1620 /* personnel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = personnel.json; sourceTree = "<group>"; };
@@ -81,10 +101,12 @@
 			isa = PBXGroup;
 			children = (
 				201ABCE02A95140200A654C2 /* Aplication */,
-				201ABCE52A951C6A00A654C2 /* Enums */,
 				201ABCF52A960E4D00A654C2 /* DataModel */,
+				201ABCE52A951C6A00A654C2 /* Enums */,
+				2042BB102A97E5F000B3CF7F /* Extension */,
 				201ABCF82A960FE500A654C2 /* Network */,
 				201ABCE12A95143200A654C2 /* Screens */,
+				2042BB1B2A97FDA000B3CF7F /* Font */,
 				201ABCE22A95148800A654C2 /* Resources */,
 			);
 			path = WarData;
@@ -103,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				201ABCE92A95224600A654C2 /* MainScreen */,
+				2042BB152A97F10900B3CF7F /* HumanScreen */,
+				2042BB182A97F65A00B3CF7F /* DetailScreen */,
 				201ABCF02A96035500A654C2 /* EquipmentScreen */,
 			);
 			path = Screens;
@@ -125,6 +149,7 @@
 				201ABCE62A951C9700A654C2 /* ImageConstants.swift */,
 				9CE9CB262A9790D5009F1620 /* Resource.swift */,
 				201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */,
+				2042BB0C2A97AC9800B3CF7F /* MainTableTitles.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -153,6 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				201ABCF62A960EC000A654C2 /* MainData.swift */,
+				2042BB082A97A70400B3CF7F /* EquipmentData.swift */,
+				2042BB0A2A97A9D400B3CF7F /* PersonnelData.swift */,
+				2042BB0E2A97B26700B3CF7F /* PrepareData.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -173,6 +201,40 @@
 				201ABCFF2A9625D200A654C2 /* main.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		2042BB102A97E5F000B3CF7F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2042BB132A97E8A500B3CF7F /* PaddingLabel.swift */,
+				2042BB112A97E61800B3CF7F /* UIView + Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2042BB152A97F10900B3CF7F /* HumanScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2042BB162A97F13300B3CF7F /* HumanViewController.swift */,
+			);
+			path = HumanScreen;
+			sourceTree = "<group>";
+		};
+		2042BB182A97F65A00B3CF7F /* DetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2042BB192A97F67C00B3CF7F /* DetailViewController.swift */,
+			);
+			path = DetailScreen;
+			sourceTree = "<group>";
+		};
+		2042BB1B2A97FDA000B3CF7F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				2042BB1C2A97FDEC00B3CF7F /* DS-DIGI.ttf */,
+				2042BB1E2A98015300B3CF7F /* DS-DIGIB.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		9CE9CB2C2A9795C8009F1620 /* Cell */ = {
@@ -241,6 +303,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2042BB1D2A97FDEC00B3CF7F /* DS-DIGI.ttf in Resources */,
+				2042BB1F2A98015300B3CF7F /* DS-DIGIB.ttf in Resources */,
 				9CE9CB2A2A9791F6009F1620 /* equipment.json in Resources */,
 				201ABD002A9625D200A654C2 /* main.json in Resources */,
 				201ABCD92A95119B00A654C2 /* LaunchScreen.storyboard in Resources */,
@@ -257,17 +321,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */,
+				2042BB0F2A97B26700B3CF7F /* PrepareData.swift in Sources */,
 				201ABCF72A960EC000A654C2 /* MainData.swift in Sources */,
+				2042BB0B2A97A9D400B3CF7F /* PersonnelData.swift in Sources */,
 				201ABCFD2A96126C00A654C2 /* WarDataErrors.swift in Sources */,
 				201ABCF42A9604F500A654C2 /* EquipmentVC+CollectionView.swift in Sources */,
+				2042BB1A2A97F67C00B3CF7F /* DetailViewController.swift in Sources */,
 				201ABCD12A95119900A654C2 /* MainViewController.swift in Sources */,
+				2042BB142A97E8A500B3CF7F /* PaddingLabel.swift in Sources */,
+				2042BB172A97F13300B3CF7F /* HumanViewController.swift in Sources */,
 				201ABCE42A951AA600A654C2 /* MainVC+UIConfig.swift in Sources */,
+				2042BB092A97A70400B3CF7F /* EquipmentData.swift in Sources */,
 				201ABCFA2A96100900A654C2 /* NetworkManager.swift in Sources */,
 				201ABCEB2A9522B300A654C2 /* MainVC+Table.swift in Sources */,
+				2042BB0D2A97AC9800B3CF7F /* MainTableTitles.swift in Sources */,
 				201ABCE72A951C9700A654C2 /* ImageConstants.swift in Sources */,
 				201ABCCD2A95119900A654C2 /* AppDelegate.swift in Sources */,
 				201ABCCF2A95119900A654C2 /* SceneDelegate.swift in Sources */,
 				201ABCED2A952DE300A654C2 /* MainTableCell.swift in Sources */,
+				2042BB122A97E61800B3CF7F /* UIView + Extensions.swift in Sources */,
 				201ABCF22A96044E00A654C2 /* EquipmentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
