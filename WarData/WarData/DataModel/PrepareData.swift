@@ -50,7 +50,7 @@ struct PrepareData {
             var value: String
             switch i {
             case .deadHuman:
-                value = "\(personnalDatum.personnel) \n знищено"
+                value = "\(personnalDatum.personnel)   \n знищено"
             case .powHuman:
                 value = "\(personnalDatum.pow ?? 0) \n полоненних"
             }

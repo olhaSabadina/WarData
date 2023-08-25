@@ -25,29 +25,21 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fond()
         configView()
         getDataForTable()
         setConstreints()
-        
+        setTargetForDateLabel()
     }
-    
-//    func fond() {
-//        for family in UIFont.familyNames.sorted() {
-//            let names = UIFont.fontNames(forFamilyName: family)
-//            print("Family: \(family) Font names: \(names)")
-//        }
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        dateLabel.cornerRadius(radius: 20, backColor: .black)
+        dayLabel.borderRadius(radius: 15, layerColor: .lightGray, width: 1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        dateLabel.cornerRadius(radius: dateLabel.frame.height/2, backColor: .black)
-        dayLabel.borderRadius(radius: dayLabel.frame.height/2, layerColor: .lightGray, width: 1)
     }
     
     func getDataForTable() {
@@ -62,5 +54,18 @@ class MainViewController: UIViewController {
         let text = "Day  \(mainDatum?.day ?? 0)  of the War"
         dayLabel.text = text
     }
+    
+    func setTargetForDateLabel() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openDatePicker))
+            dateLabel.isUserInteractionEnabled = true
+            dateLabel.addGestureRecognizer(tap)
+    }
+    
+    @objc func openDatePicker(sender:UITapGestureRecognizer) {
+        
+    }
 }
+    
+    
+
 

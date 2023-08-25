@@ -42,8 +42,8 @@ class HumanCollectionCell: UICollectionViewCell {
     func setValueForCell() {
         guard let itemData = itemData else {return}
         imageView.image = UIImage(named: itemData.image)
-        dayLabel.text = "день \(itemData.day)"
-        valueLabel.text = itemData.value
+        dayLabel.attributedText = "день \(itemData.day)".setAttributeForFirstEightSymbols(20, count: 5)
+        valueLabel.attributedText = itemData.value.setAttributeForFirstEightSymbols(47,count: 8)
     }
     
     private func configureCell() {
@@ -58,19 +58,19 @@ class HumanCollectionCell: UICollectionViewCell {
         stack = UIStackView(arrangedSubviews: [valueLabel, dayLabel])
         stack.axis = .vertical
         stack.spacing = 20
-        stack.distribution = .fillProportionally
+        stack.distribution = .fill
         stack.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stack)
     }
     
     func setDayLabel() {
-        dayLabel.font = UIFont(name: "DS-Digital-Bold", size: 20)
+        dayLabel.font = UIFont(name: "DS-Digital-Bold", size: 26)
         dayLabel.textAlignment = .center
         dayLabel.textColor = .white
     }
     
     func setValueLabel() {
-        valueLabel.font = UIFont(name: "DS-Digital-Bold", size: 25)
+        valueLabel.font = UIFont(name: "DS-Digital-Bold", size: 20)
         valueLabel.textAlignment = .center
         valueLabel.textColor = .yellow
         valueLabel.numberOfLines = 0
@@ -90,7 +90,7 @@ class HumanCollectionCell: UICollectionViewCell {
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             
-            stack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 15),
+            stack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15)
