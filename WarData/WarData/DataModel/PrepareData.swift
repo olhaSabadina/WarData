@@ -50,9 +50,9 @@ struct PrepareData {
             var value: String
             switch i {
             case .deadHuman:
-                value = "\(personnalDatum.personnel)   \n знищено"
+                value = "знищено   \n \(personnalDatum.personnel)"
             case .powHuman:
-                value = "\(personnalDatum.pow ?? 0) \n полоненних"
+                value = "полоненних\n \(personnalDatum.pow ?? 0)"
             }
             let item = HumanItemData(image: i.rawValue, value: "\(value)", day: "\(personnalDatum.day)")
             array.append(item)

@@ -39,8 +39,6 @@ extension MainViewController {
             mainTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             mainTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
-            
-        
         ])
     }
     

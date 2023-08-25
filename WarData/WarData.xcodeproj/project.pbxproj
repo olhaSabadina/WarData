@@ -34,6 +34,8 @@
 		2042BB242A98994700B3CF7F /* HumanCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB232A98994700B3CF7F /* HumanCollectionCell.swift */; };
 		2042BB272A98A1AF00B3CF7F /* CompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB262A98A1AF00B3CF7F /* CompositionalLayout.swift */; };
 		2042BB492A99116900B3CF7F /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB482A99116900B3CF7F /* String+Extension.swift */; };
+		2042BB4B2A993ABA00B3CF7F /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */; };
+		2042BB4D2A99536D00B3CF7F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB4C2A99536D00B3CF7F /* Date+Extensions.swift */; };
 		9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9CB262A9790D5009F1620 /* Resource.swift */; };
 		9CE9CB2A2A9791F6009F1620 /* equipment.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB282A9791F5009F1620 /* equipment.json */; };
 		9CE9CB2B2A9791F6009F1620 /* personnel.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB292A9791F6009F1620 /* personnel.json */; };
@@ -69,6 +71,8 @@
 		2042BB232A98994700B3CF7F /* HumanCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanCollectionCell.swift; sourceTree = "<group>"; };
 		2042BB262A98A1AF00B3CF7F /* CompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayout.swift; sourceTree = "<group>"; };
 		2042BB482A99116900B3CF7F /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		2042BB4C2A99536D00B3CF7F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		9CE9CB262A9790D5009F1620 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		9CE9CB282A9791F5009F1620 /* equipment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = equipment.json; sourceTree = "<group>"; };
 		9CE9CB292A9791F6009F1620 /* personnel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = personnel.json; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 			children = (
 				201ABCD02A95119900A654C2 /* MainViewController.swift */,
 				201ABCE32A951AA600A654C2 /* MainVC+UIConfig.swift */,
+				2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */,
 				201ABCEA2A9522B300A654C2 /* MainVC+Table.swift */,
 				9CE9CB2C2A9795C8009F1620 /* Cell */,
 			);
@@ -204,6 +209,7 @@
 				2042BB132A97E8A500B3CF7F /* PaddingLabel.swift */,
 				2042BB112A97E61800B3CF7F /* UIView + Extensions.swift */,
 				2042BB482A99116900B3CF7F /* String+Extension.swift */,
+				2042BB4C2A99536D00B3CF7F /* Date+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 				2042BB0B2A97A9D400B3CF7F /* PersonnelData.swift in Sources */,
 				201ABCFD2A96126C00A654C2 /* WarDataErrors.swift in Sources */,
 				2042BB1A2A97F67C00B3CF7F /* DetailViewController.swift in Sources */,
+				2042BB4B2A993ABA00B3CF7F /* DatePickerView.swift in Sources */,
 				201ABCD12A95119900A654C2 /* MainViewController.swift in Sources */,
 				2042BB272A98A1AF00B3CF7F /* CompositionalLayout.swift in Sources */,
 				2042BB142A97E8A500B3CF7F /* PaddingLabel.swift in Sources */,
@@ -351,6 +358,7 @@
 				201ABCFA2A96100900A654C2 /* NetworkManager.swift in Sources */,
 				201ABCEB2A9522B300A654C2 /* MainVC+Table.swift in Sources */,
 				2042BB0D2A97AC9800B3CF7F /* MainTableTitles.swift in Sources */,
+				2042BB4D2A99536D00B3CF7F /* Date+Extensions.swift in Sources */,
 				201ABCE72A951C9700A654C2 /* ImageConstants.swift in Sources */,
 				201ABCCD2A95119900A654C2 /* AppDelegate.swift in Sources */,
 				201ABCCF2A95119900A654C2 /* SceneDelegate.swift in Sources */,

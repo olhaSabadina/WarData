@@ -43,7 +43,7 @@ class HumanCollectionCell: UICollectionViewCell {
         guard let itemData = itemData else {return}
         imageView.image = UIImage(named: itemData.image)
         dayLabel.attributedText = "день \(itemData.day)".setAttributeForFirstEightSymbols(20, count: 5)
-        valueLabel.attributedText = itemData.value.setAttributeForFirstEightSymbols(47,count: 8)
+        valueLabel.attributedText = itemData.value.setAttributeForFirstEightSymbols(23,count: 10)
     }
     
     private func configureCell() {
@@ -70,7 +70,7 @@ class HumanCollectionCell: UICollectionViewCell {
     }
     
     func setValueLabel() {
-        valueLabel.font = UIFont(name: "DS-Digital-Bold", size: 20)
+        valueLabel.font = UIFont(name: "DS-Digital-Bold", size: 47)
         valueLabel.textAlignment = .center
         valueLabel.textColor = .yellow
         valueLabel.numberOfLines = 0

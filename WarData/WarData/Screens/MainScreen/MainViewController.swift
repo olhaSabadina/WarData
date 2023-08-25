@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     var dayLabel = UILabel()
     var mainData: MainData?
     var personnelData: PersonnelData?
+    var datePicker: DatePickerView?
     var titleArray = MainTableTitles.titleArray
     var rowData: [RowData] = [] {
         didSet {
@@ -42,6 +43,40 @@ class MainViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
+    @objc func closeDatePicker() {
+        datePicker?.removeFromSuperview()
+    }
+    
+    @objc func pushDateFromPicker() {
+        guard let selectedDate = datePicker?.datePicker.date.formaterDate("yyyy-MM-dd") else {return}
+        
+ 
+        closeDatePicker()
+    }
+    
+    func selectedDateInDataArray(_ date: String?) {
+        
+        
+        mainData = networkManager.fetchData(resource: .main, of: MainData.self)
+        personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
+        
+        mainData?.forEach { mainDatum in
+            let item = date == mainDatum.date ? mainDatum.self : mainData?.last
+        }
+       
+            
+        
+        
+        
+    }
+    
+    @objc func openDatePicker(sender:UITapGestureRecognizer) {
+        datePicker = DatePickerView(frame: self.view.frame)
+        datePicker?.cancelButton.addTarget(self, action: #selector(closeDatePicker), for: .touchUpInside)
+        datePicker?.okButton.addTarget(self, action: #selector(pushDateFromPicker), for: .touchUpInside)
+        view.addSubview(datePicker ?? UIView())
+    }
+    
     func getDataForTable() {
         mainData = networkManager.fetchData(resource: .main, of: MainData.self)
         personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
@@ -61,9 +96,6 @@ class MainViewController: UIViewController {
             dateLabel.addGestureRecognizer(tap)
     }
     
-    @objc func openDatePicker(sender:UITapGestureRecognizer) {
-        
-    }
 }
     
     

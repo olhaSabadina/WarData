@@ -79,7 +79,7 @@ class HumanViewController: UIViewController {
     
     func setButtons() {
         let buttons = [previousDayButton, nextDayButton]
-        for button in buttons {
+        buttons.forEach { button in
             button.cornerRadius(radius: 25, backColor: .black)
             button.tintColor = .white
         }
