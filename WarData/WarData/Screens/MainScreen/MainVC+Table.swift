@@ -39,16 +39,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
        
-        var detailVC: UIViewController?
+//        var detailVC: UIViewController?
         let titleItem = MainTableTitles.allCases[indexPath.row]
         switch titleItem {
-        case .personnel: detailVC = HumanViewController()
-        case .tank: detailVC = DetailViewController()
+        case .personnel: let detailVC = HumanViewController()
+            detailVC.personnelData = personnelData
+            navigationController?.pushViewController(detailVC, animated: true)
+        case .tank: let detailVC = DetailViewController()
+            navigationController?.pushViewController(detailVC, animated: true)
         default: break
         }
-        
-        guard let detailVC = detailVC else {return}
-        navigationController?.pushViewController(detailVC, animated: true)
+//        guard let detailVC = detailVC else {return}
+//        navigationController?.pushViewController(detailVC, animated: true)
     }
     
 }

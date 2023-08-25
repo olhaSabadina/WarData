@@ -11,6 +11,13 @@ import UIKit
 enum ImageConstants {
     //Images for GeneralViewController
     static let background  = UIImage(named: "backgroundImage")
+    static let backgroundHuman  = UIImage(named: "backHuman")
+
+}
+
+enum ImageForPersonnel: String, CaseIterable {
+    case deadHuman
+    case powHuman
 }
 
 
