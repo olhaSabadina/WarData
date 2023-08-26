@@ -51,7 +51,7 @@ class DatePickerView: UIView {
     }
     
     private func configureView() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 20
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 1
@@ -69,15 +69,15 @@ class DatePickerView: UIView {
     }
     
     private func configureTitleLabel() {
-        titleLabel.text = "Select a date to search losses in war"
+        titleLabel.text = "Оберіть день для пошуку втрат у віні"
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont(name: "Regular", size: 12)
+        titleLabel.font = UIFont(name: "Regular", size: 15)
     }
     
     private func configureButtons() {
-        okButton.setTitle("OK", for: .normal)
-        cancelButton.setTitle("Cancel", for: .normal)
+        okButton.setTitle("Обрати", for: .normal)
+        cancelButton.setTitle("Скасувати", for: .normal)
         let buttons = [okButton,cancelButton]
         buttons.forEach { button in
             button.backgroundColor = UIColor.systemGray2

@@ -15,8 +15,10 @@ class MainViewController: UIViewController {
     var dateLabel = UILabel()
     var dayLabel = UILabel()
     var mainData: MainData?
+    var mainDatum: MainDatum?
     var personnelData: PersonnelData?
-    var datePicker: DatePickerView?
+    var personelDatum: PersonnelDatum?
+    var datePickerView: DatePickerView?
     var titleArray = MainTableTitles.titleArray
     var rowData: [RowData] = [] {
         didSet {
@@ -43,54 +45,53 @@ class MainViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
-    @objc func closeDatePicker() {
-        datePicker?.removeFromSuperview()
+    @objc func closeDatePickerView() {
+        datePickerView?.removeFromSuperview()
+    }
+    
+    
+    @objc func openDatePicker(sender:UITapGestureRecognizer) {
+        datePickerView = DatePickerView(frame: self.view.frame)
+        datePickerView?.cancelButton.addTarget(self, action: #selector(closeDatePickerView), for: .touchUpInside)
+        datePickerView?.okButton.addTarget(self, action: #selector(pushDateFromPicker), for: .touchUpInside)
+        view.addSubview(datePickerView ?? UIView())
     }
     
     @objc func pushDateFromPicker() {
-        guard let selectedDate = datePicker?.datePicker.date.formaterDate("yyyy-MM-dd") else {return}
-        
- 
-        closeDatePicker()
+        guard let datePickerView = datePickerView else {return}
+        let selectedDate = datePickerView.datePicker.date
+        let searchDateString = selectedDate.formateDate()
+        findMainDatumForDate(dateString: searchDateString)
+        createRowData()
+        closeDatePickerView()
     }
     
-    func selectedDateInDataArray(_ date: String?) {
-        
-        
-        mainData = networkManager.fetchData(resource: .main, of: MainData.self)
-        personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
-        
-        mainData?.forEach { mainDatum in
-            let item = date == mainDatum.date ? mainDatum.self : mainData?.last
+    func findMainDatumForDate(dateString: String) {
+        mainDatum = mainData?.first(where: {$0.date == dateString})
+        personelDatum = personnelData?.first(where: {$0.date == dateString})
+        guard mainDatum != nil, personelDatum != nil else {
+            //TODO: olya alert "date not found"
+            print("not date found")
+            return
         }
-       
-            
-        
-        
-        
     }
     
-    @objc func openDatePicker(sender:UITapGestureRecognizer) {
-        datePicker = DatePickerView(frame: self.view.frame)
-        datePicker?.cancelButton.addTarget(self, action: #selector(closeDatePicker), for: .touchUpInside)
-        datePicker?.okButton.addTarget(self, action: #selector(pushDateFromPicker), for: .touchUpInside)
-        view.addSubview(datePicker ?? UIView())
-    }
-    
-    func getDataForTable() {
-        mainData = networkManager.fetchData(resource: .main, of: MainData.self)
-        personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
-        
-        let mainDatum = mainData?.last
-        
-        rowData = PrepareData.prepareDataToArray(titleArray, mainDatum: mainDatum, personnelDatum: personnelData?.last)
-        
+    private func createRowData() {
+        rowData = PrepareData.prepareDataToArray(titleArray, mainDatum: mainDatum, personnelDatum: personelDatum)
         dateLabel.text = mainDatum?.date
         let text = "Day  \(mainDatum?.day ?? 0)  of the War"
         dayLabel.text = text
     }
     
-    func setTargetForDateLabel() {
+    private func getDataForTable() {
+        mainData = networkManager.fetchData(resource: .main, of: MainData.self)
+        personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
+        mainDatum = mainData?.last
+        personelDatum = personnelData?.last
+        createRowData()
+    }
+    
+    private func setTargetForDateLabel() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(openDatePicker))
             dateLabel.isUserInteractionEnabled = true
             dateLabel.addGestureRecognizer(tap)

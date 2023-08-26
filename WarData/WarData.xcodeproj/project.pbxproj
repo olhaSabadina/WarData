@@ -115,7 +115,7 @@
 				2042BB102A97E5F000B3CF7F /* Extension */,
 				201ABCF82A960FE500A654C2 /* Network */,
 				201ABCE12A95143200A654C2 /* Screens */,
-				2042BB1B2A97FDA000B3CF7F /* Font */,
+				9C25114F2A99C67B009090AD /* View */,
 				201ABCE22A95148800A654C2 /* Resources */,
 			);
 			path = WarData;
@@ -144,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				201ABCFE2A96258100A654C2 /* JSON */,
+				2042BB1B2A97FDA000B3CF7F /* Font */,
 				201ABCD52A95119B00A654C2 /* Assets.xcassets */,
 				201ABCD72A95119B00A654C2 /* LaunchScreen.storyboard */,
 				201ABCDA2A95119B00A654C2 /* Info.plist */,
@@ -167,7 +168,6 @@
 			children = (
 				201ABCD02A95119900A654C2 /* MainViewController.swift */,
 				201ABCE32A951AA600A654C2 /* MainVC+UIConfig.swift */,
-				2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */,
 				201ABCEA2A9522B300A654C2 /* MainVC+Table.swift */,
 				9CE9CB2C2A9795C8009F1620 /* Cell */,
 			);
@@ -255,6 +255,14 @@
 				2042BB262A98A1AF00B3CF7F /* CompositionalLayout.swift */,
 			);
 			path = CompositionalLayout;
+			sourceTree = "<group>";
+		};
+		9C25114F2A99C67B009090AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9CE9CB2C2A9795C8009F1620 /* Cell */ = {
