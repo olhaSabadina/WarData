@@ -15,6 +15,10 @@ class DetailViewController: UIViewController {
     let lossesLabel = UILabel()
     let manufacturerLabel = UILabel()
     var infoStack = UIStackView()
+    let networkManager = NetworkManager()
+    var equipmentData: EquipmentData?
+    var filterTypeValue = EquipmentUa.aircrafts
+    var equipArray = [EquipmentFilterData]()
  
     
     override func viewDidLoad() {
@@ -23,6 +27,11 @@ class DetailViewController: UIViewController {
         setCollectionView()
         setInfoStack()
         setConstraints()
+    }
+    
+    func getDataForCollection() {
+        equipmentData = networkManager.fetchData(resource: .equipment, of: EquipmentData.self)
+        equipArray = PrepareDataManager.prepareEquipmentData(equipmentData, typeEquipment: filterTypeValue)
     }
 
     private func setupView() {

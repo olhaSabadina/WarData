@@ -40,16 +40,40 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let titleItem = MainTableTitles.allCases[indexPath.row]
+        var detailVC = DetailViewController()
+        
         switch titleItem {
-        case .personnel: let detailVC = HumanViewController()
-            detailVC.personnelData = personnelData
-            detailVC.personalDatum = personelDatum
-            navigationController?.pushViewController(detailVC, animated: true)
-        case .tank, .aircraft: let detailVC = DetailViewController()
-            //detailVC.equipment = .tank
-            navigationController?.pushViewController(detailVC, animated: true)
+            
+        case .personnel:
+            let humanVC = HumanViewController()
+            humanVC.personnelData = personnelData
+            humanVC.personalDatum = personelDatum
+            navigationController?.pushViewController(humanVC, animated: true)
+            return
+            
+        case .aircraft:
+            detailVC.filterTypeValue = .aircrafts
+        case .helicopter:
+            detailVC.filterTypeValue = .helicopters
+        case .tank:
+            detailVC.filterTypeValue = .tanks
+        case .apc:
+            detailVC.filterTypeValue = .armouredPersonnelCarriers
+        case .fieldArtillery:
+            detailVC.filterTypeValue = .artillerySystems
+        case .mrl:
+            detailVC.filterTypeValue = .multipleRocketLaunchers
+        case .navalShip:
+            detailVC.filterTypeValue = .warshipsBoats
+        case .antiAircraftWarfare:
+            detailVC.filterTypeValue = .antiAircraftWarfareSystems
+        case .specialEquipment:
+            detailVC.filterTypeValue = .specialEquipment
+        case .vehiclesAndFuelTanks:
+            detailVC.filterTypeValue = .vehicleAndFuelTank
         default: break
         }
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
