@@ -44,14 +44,17 @@ class HumanViewController: UIViewController {
             guard indexPersonnale > 0 else {return}
             indexPersonnale -= 1
             if indexPersonnale == 0 {
-                itemsData = PrepareDataManager.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: nil)
+                personalDatum = personnelData?[indexPersonnale]
+                itemsData =  PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: nil)
             } else {
-                itemsData = PrepareDataManager.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
+                personalDatum = personnelData?[indexPersonnale]
+                itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexPersonnale-1])
             }
         } else {
             guard indexPersonnale < giveMaxIndex() else {return}
             indexPersonnale += 1
-            itemsData = PrepareDataManager.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
+            personalDatum = personnelData?[indexPersonnale]
+            itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexPersonnale-1])
         }
     }
     

@@ -40,7 +40,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
 
         let titleItem = MainTableTitles.allCases[indexPath.row]
-        var detailVC = DetailViewController()
+        let detailVC = DetailViewController()
         
         switch titleItem {
             
@@ -71,7 +71,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             detailVC.filterTypeValue = .specialEquipment
         case .vehiclesAndFuelTanks:
             detailVC.filterTypeValue = .vehicleAndFuelTank
-        default: break
+        default: return
         }
         navigationController?.pushViewController(detailVC, animated: true)
     }

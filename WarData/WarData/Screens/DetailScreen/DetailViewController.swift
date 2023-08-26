@@ -18,7 +18,11 @@ class DetailViewController: UIViewController {
     let networkManager = NetworkManager()
     var equipmentData: EquipmentData?
     var filterTypeValue = EquipmentUa.aircrafts
-    var equipArray = [EquipmentFilterData]()
+    var equipArray = [EquipmentFilterData]() {
+        didSet {
+            detailCollection?.reloadData()
+        }
+    }
  
     
     override func viewDidLoad() {
@@ -26,12 +30,14 @@ class DetailViewController: UIViewController {
         setupView()
         setCollectionView()
         setInfoStack()
+        getDataForCollection()
         setConstraints()
     }
     
     func getDataForCollection() {
         equipmentData = networkManager.fetchData(resource: .equipment, of: EquipmentData.self)
         equipArray = PrepareDataManager.prepareEquipmentData(equipmentData, typeEquipment: filterTypeValue)
+        selValueForStackLabel(data: equipArray.first)
     }
 
     private func setupView() {
@@ -47,10 +53,15 @@ class DetailViewController: UIViewController {
     
     func setInfoStack() {
         let labelsArray = [modelLabel, manufacturerLabel, lossesLabel]
+        labelsArray.forEach { label in
+            label.font = UIFont(name: "DS-Digital-Bold", size: 25)
+            label.textColor = .yellow
+            label.numberOfLines = 0
+        }
         for (index, value) in labelsArray.enumerated() {
             let titleLabel = UILabel()
             titleLabel.text = Constant.arrayLabel[index]
-            titleLabel.font = .systemFont(ofSize: 21)
+            titleLabel.font = UIFont(name: "DS-Digital-Bold", size: 18)
             titleLabel.textAlignment = .right
             titleLabel.textColor = .yellow
             let stackH = UIStackView(arrangedSubviews: [titleLabel, value])
@@ -59,13 +70,20 @@ class DetailViewController: UIViewController {
             stackH.distribution = .fillEqually
             infoStack.addArrangedSubview(stackH)
         }
-        infoStack.backgroundColor = .gray.withAlphaComponent(0.5)
-        infoStack.borderRadius(radius: 10, layerColor: .darkGray, width: 1)
+        //infoStack.backgroundColor = .gray.withAlphaComponent(0.5)
+        //infoStack.borderRadius(radius: 10, layerColor: .darkGray, width: 1)
         infoStack.axis = .vertical
         infoStack.spacing = 10
-        infoStack.distribution = .fillEqually
+        //infoStack.distribution = .fillEqually
         infoStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(infoStack)
+    }
+    
+    func selValueForStackLabel(data: EquipmentFilterData?) {
+        guard let data = data else {return}
+        modelLabel.text = data.model
+        lossesLabel.text = "\(data.losses)"
+        manufacturerLabel.text = data.manufacture
     }
     
     private func setConstraints() {
@@ -79,7 +97,7 @@ class DetailViewController: UIViewController {
             collView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collView.heightAnchor.constraint(equalToConstant: 300),
+            collView.heightAnchor.constraint(equalToConstant: 350),
             
             infoStack.topAnchor.constraint(equalTo: collView.bottomAnchor, constant: 20),
             infoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
