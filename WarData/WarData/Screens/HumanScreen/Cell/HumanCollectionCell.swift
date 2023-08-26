@@ -32,18 +32,9 @@ class HumanCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
     func setValueForCell() {
         guard let itemData = itemData else {return}
         imageView.image = UIImage(named: itemData.image)
-        print(itemData.day)
         dayLabel.attributedText = "день \(itemData.day)".setAttributeForSymbols(20, count: 5)
         valueLabel.attributedText = itemData.value.setAttributeForSymbols(23,count: 10)
         dailyLoss.text = "+ \(itemData.dailyLoss)"
@@ -87,15 +78,15 @@ class HumanCollectionCell: UICollectionViewCell {
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
-        imageView.borderRadius(radius: 10, layerColor: .black, width: 2)
+        imageView.addShadow(cornerRadius: 10, offset: .init(width: 5, height: 8), color: .black, radius: 7, opacity: 1)
     }
         
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 25),
             imageView.bottomAnchor.constraint(equalTo: centerYAnchor, constant: 30),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             
             stack.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),

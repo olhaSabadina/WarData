@@ -34,8 +34,7 @@ class DetailCollectionCell: UICollectionViewCell {
     }
     
     private func setValueForCell() {
-        //TODO: set image
-        imageView.image = UIImage(named: equipmentFilterData?.nameEquipment ?? "questionmark.app")
+        imageView.image = UIImage(named: equipmentFilterData?.nameEquipment ?? "no-photo")
         modelLabel.text = equipmentFilterData?.model
         nameEquipment.text = equipmentFilterData?.nameEquipment
     }
@@ -52,18 +51,26 @@ class DetailCollectionCell: UICollectionViewCell {
     }
     
     func setModelLabel() {
-        modelLabel.translatesAutoresizingMaskIntoConstraints = false
-        modelLabel.font = .boldSystemFont(ofSize: 17)
-        modelLabel.textAlignment = .center
+        let arrayLabel = [nameEquipment, modelLabel]
+        arrayLabel.forEach { label in
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.font = .boldSystemFont(ofSize: 17)
+            label.textAlignment = .center
+            label.textColor = .yellow
+            label.adjustsFontSizeToFitWidth = true
+            addSubview(label)
+        }
+        nameEquipment.numberOfLines = 2
         modelLabel.numberOfLines = 3
-        modelLabel.textColor = .yellow
-        modelLabel.adjustsFontSizeToFitWidth = true
-        addSubview(modelLabel)
     }
     
     func setConstreints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            nameEquipment.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            nameEquipment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            nameEquipment.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            nameEquipment.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -5),
+            
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             imageView.bottomAnchor.constraint(equalTo: modelLabel.topAnchor, constant: -20),

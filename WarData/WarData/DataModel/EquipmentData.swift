@@ -23,18 +23,21 @@ struct EquipmentDatum: Codable {
     }
 }
 
-enum EquipmentUa: String, Codable {
+enum EquipmentUa: String, Codable, CaseIterable {
+    case personnel = "personnel"
     case aircrafts = "Aircrafts"
-    case antiAircraftWarfareSystems = "Anti-aircraft Warfare Systems"
+    case helicopters = "Helicopters"
+    case tanks = "Tanks"
     case armouredPersonnelCarriers = "Armoured Personnel Carriers"
     case artillerySystems = "Artillery Systems"
-    case helicopters = "Helicopters"
     case multipleRocketLaunchers = "Multiple Rocket Launchers"
-    case specialEquipment = "Special Equipment"
-    case tanks = "Tanks"
-    case unmannedAerialVehicles = "Unmanned Aerial Vehicles"
-    case vehicleAndFuelTank = "Vehicle and Fuel Tank"
+    case drone = "dron"
     case warshipsBoats = "Warships, Boats"
+    case antiAircraftWarfareSystems = "Anti-aircraft Warfare Systems"
+    case specialEquipment = "Special Equipment"
+    case vehicleAndFuelTank = "Vehicle and Fuel Tank"
+    case cruiseMissiles = "cruiseMissiles"
+    case unmannedAerialVehicles = "Unmanned Aerial Vehicles"
 }
 
 enum Manufacturer: String, Codable {

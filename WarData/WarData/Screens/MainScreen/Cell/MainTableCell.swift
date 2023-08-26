@@ -70,10 +70,12 @@ class MainTableCell: UITableViewCell {
     func configureCell() {
         nameEquipmentLabel.text = rowData?.title
         numberOfLossesLabel.text = rowData?.value
+        imageEquipmentImageView.image = UIImage(named: rowData?.image ?? "no-photo")
     }
     
     func setStackImage() {
-        imageEquipmentImageView.backgroundColor = .red
+        imageEquipmentImageView.contentMode = .scaleAspectFit
+        imageEquipmentImageView.backgroundColor = .gray.withAlphaComponent(0.3)
     }
     
     func setConstreints() {

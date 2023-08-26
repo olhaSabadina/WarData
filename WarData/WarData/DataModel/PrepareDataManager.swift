@@ -43,7 +43,7 @@ struct PrepareDataManager {
             }
             
             let rowData = RowData(title: text,
-                                  image: "",
+                                  image: EquipmentUa.allCases[index].rawValue,
                                   value: value)
             resultRowData.append(rowData)
         }

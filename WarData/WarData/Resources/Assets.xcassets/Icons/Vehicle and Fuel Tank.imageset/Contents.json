@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "truck.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "airplane.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
