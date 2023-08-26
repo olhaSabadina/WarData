@@ -49,9 +49,13 @@ class MainViewController: UIViewController {
         datePickerView?.removeFromSuperview()
     }
     
+//MARK: - @objc Function:
     
     @objc func openDatePicker(sender:UITapGestureRecognizer) {
         datePickerView = DatePickerView(frame: self.view.frame)
+        datePickerView?.datePickerSelectDate = mainDatum?.date.transformStringToDate()
+        datePickerView?.maximumDate = mainData?.last?.date.transformStringToDate()
+        datePickerView?.minimumDate = mainData?.first?.date.transformStringToDate()
         datePickerView?.cancelButton.addTarget(self, action: #selector(closeDatePickerView), for: .touchUpInside)
         datePickerView?.okButton.addTarget(self, action: #selector(pushDateFromPicker), for: .touchUpInside)
         view.addSubview(datePickerView ?? UIView())
@@ -65,6 +69,8 @@ class MainViewController: UIViewController {
         createRowData()
         closeDatePickerView()
     }
+    
+//MARK: - Function:
     
     func findMainDatumForDate(dateString: String) {
         mainDatum = mainData?.first(where: {$0.date == dateString})

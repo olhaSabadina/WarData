@@ -9,8 +9,8 @@ import UIKit
 
 extension String {
     
-    func setAttributeForFirstEightSymbols(_ sizeFont: CGFloat, count: Int) -> NSMutableAttributedString? {
-        guard self.count >= 8 else {return nil}
+    func setAttributeForSymbols(_ sizeFont: CGFloat, count: Int) -> NSMutableAttributedString? {
+        guard self.count >= 4 else {return nil}
         let range = NSRange(location: 0, length: count)
         let attributedString = NSMutableAttributedString(string: self, attributes: nil)
         attributedString.setAttributes([
@@ -18,5 +18,13 @@ extension String {
             .foregroundColor: UIColor.white.cgColor],
                                        range: range)
         return attributedString
+    }
+    
+    func transformStringToDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from:self)
+        return date
     }
 }

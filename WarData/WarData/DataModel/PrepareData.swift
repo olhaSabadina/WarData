@@ -17,6 +17,7 @@ struct HumanItemData {
     let image: String
     let value: String
     let day: String
+    let dailyLoss: Int
 }
 
 struct PrepareData {
@@ -43,18 +44,23 @@ struct PrepareData {
     }
     
     
-    static func preparePersonnelArray(_ personnalDatum: PersonnelDatum?) -> [HumanItemData] {
+    static func preparePersonnelArray(_ personnalDatum: PersonnelDatum?, previousDay: PersonnelDatum?) -> [HumanItemData] {
             var array = [HumanItemData]()
         guard let personnalDatum = personnalDatum else { return array}
         for i in ImageForPersonnel.allCases {
             var value: String
+            var lossDay = 0
             switch i {
             case .deadHuman:
                 value = "знищено   \n \(personnalDatum.personnel)"
+                if let previous = previousDay {
+                    lossDay = personnalDatum.personnel - previous.personnel
+                }
             case .powHuman:
                 value = "полоненних\n \(personnalDatum.pow ?? 0)"
             }
-            let item = HumanItemData(image: i.rawValue, value: "\(value)", day: "\(personnalDatum.day)")
+            
+            let item = HumanItemData(image: i.rawValue, value: "\(value)", day: "\(personnalDatum.day)", dailyLoss: lossDay)
             array.append(item)
             }
             return array
