@@ -14,8 +14,13 @@ class DatePickerView: UIView {
     let titleLabel = UILabel()
     let okButton = UIButton(type: .system)
     let cancelButton = UIButton(type: .system)
-    var minimumDate: Date?
+    var minimumDate: Date? {
+        didSet {
+            configureDatePicker()
+        }
+    }
     var maximumDate: Date?
+    var datePickerSelectDate: Date?
     
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -88,32 +93,15 @@ class DatePickerView: UIView {
     }
     
     private func configureDatePicker() {
-        configureMinimumDate()
-        configureMaxmumDate()
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.maximumDate = maximumDate
         datePicker.minimumDate = minimumDate
         datePicker.datePickerMode = .date
         datePicker.locale = Locale(identifier: "uk")
+        guard let date = datePickerSelectDate else {return}
+        datePicker.date = date
     }
     
-    private func configureMinimumDate() {
-        var minDateComponents = DateComponents()
-        minDateComponents.day = 25
-        minDateComponents.month = 2
-        minDateComponents.year = 2022
-        let userCalendar = Calendar.current
-        minimumDate = userCalendar.date(from: minDateComponents)
-    }
-    
-    private func configureMaxmumDate() {
-        var maxDateComponents = DateComponents()
-        maxDateComponents.day = 10
-        maxDateComponents.month = 8
-        maxDateComponents.year = 2023
-        let userCalendar = Calendar.current
-        maximumDate = userCalendar.date(from: maxDateComponents)
-    }
     func setConstraints() {
         NSLayoutConstraint.activate([
             view.centerXAnchor.constraint(equalTo: centerXAnchor),

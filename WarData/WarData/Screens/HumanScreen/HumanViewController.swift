@@ -21,11 +21,11 @@ class HumanViewController: UIViewController {
     var itemsData: [HumanItemData] = [] {
         didSet {
             configureScreen()
-            collectionView?.reloadData()
         }
     }
 
-
+//MARK: - Life cycle:
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
@@ -37,6 +37,27 @@ class HumanViewController: UIViewController {
         configureItemData()
     }
     
+//MARK: - @objc Functions:
+    @objc func changeDay(_ sender: UIButton) {
+        
+        if sender == previousDayButton {
+            guard indexPersonnale > 0 else {return}
+            indexPersonnale -= 1
+            if indexPersonnale == 0 {
+                itemsData = PrepareData.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: nil)
+            } else {
+                itemsData = PrepareData.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
+            }
+        } else {
+            guard indexPersonnale < giveMaxIndex() else {return}
+            indexPersonnale += 1
+            itemsData = PrepareData.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
+        }
+    }
+    
+    
+//MARK: - private Functions:
+        
     private func setView() {
         title = "Особовий склад"
         backgroundImageView.image = ImageConstants.backgroundHuman
@@ -47,20 +68,19 @@ class HumanViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    func configureItemData() {
-        guard let index = personnelData?.count else {return}
-        indexPersonnale = index - 1
-        personalDatum = personnelData?[indexPersonnale]
-        itemsData = PrepareData.preparePersonnelArray(personalDatum)
-        print(itemsData.count)
+    private func configureItemData() {
+        guard let index = personnelData?.firstIndex(where: {$0.date == personalDatum?.date}) else {return}
+        indexPersonnale = index
+        let indexRight = indexPersonnale == 0 ? 0 : indexPersonnale - 1
+        itemsData = PrepareData.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexRight])
     }
     
-    func configureScreen() {
+    private func configureScreen() {
         dateLabel.text = personalDatum?.date
         collectionView?.reloadData()
     }
     
-    func setStack() {
+    private func setStack() {
         stack = UIStackView(arrangedSubviews: [previousDayButton, dateLabel, nextDayButton])
         stack.axis = .horizontal
         stack.spacing = 20
@@ -69,7 +89,7 @@ class HumanViewController: UIViewController {
         view.addSubview(stack)
     }
     
-    func setDateLabel() {
+    private func setDateLabel() {
         dateLabel = PaddingLabel(withInsets: 5, 5, 15, 15)
         dateLabel.font = UIFont(name: "DS-Digital-Bold", size: 28)
         dateLabel.textAlignment = .center
@@ -77,15 +97,25 @@ class HumanViewController: UIViewController {
         dateLabel.text = "2023-05-08"
     }
     
-    func setButtons() {
+    private func setButtons() {
+        let imageForTitle = ["chevron.backward","chevron.right"]
         let buttons = [previousDayButton, nextDayButton]
-        buttons.forEach { button in
+        buttons.enumerated().forEach { index, button in
             button.cornerRadius(radius: 25, backColor: .black)
             button.tintColor = .white
+            button.setImage(UIImage(systemName: imageForTitle[index]), for: .normal)
         }
-        previousDayButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        nextDayButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        previousDayButton.addTarget(self, action: #selector(changeDay(_:)), for: .touchUpInside)
+        nextDayButton.addTarget(self, action: #selector(changeDay(_:)), for: .touchUpInside)
     }
+    
+    private func giveMaxIndex() -> Int {
+        guard let personnelData = personnelData else {return 0}
+        let maxIndex = personnelData.count - 1
+        return maxIndex
+    }
+    
+//MARK: - SetConstraints:
     
     private func setConstraints() {
         guard let collView = collectionView else {return}

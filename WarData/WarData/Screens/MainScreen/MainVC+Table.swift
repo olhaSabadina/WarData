@@ -43,6 +43,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch titleItem {
         case .personnel: let detailVC = HumanViewController()
             detailVC.personnelData = personnelData
+            detailVC.personalDatum = personelDatum
             navigationController?.pushViewController(detailVC, animated: true)
         case .tank, .aircraft: let detailVC = DetailViewController()
             navigationController?.pushViewController(detailVC, animated: true)
