@@ -1,35 +1,35 @@
 //
-//  HumanVC+Collection.swift
+//  DetailVC+Collection.swift
 //  WarData
 //
-//  Created by Olga Sabadina on 25.08.2023.
+//  Created by Olga Sabadina on 26.08.2023.
 //
 
 import UIKit
 
-extension HumanViewController {
+extension DetailViewController {
     
     func setCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        collectionView?.backgroundColor = .clear
-        collectionView?.translatesAutoresizingMaskIntoConstraints = false
+        detailCollection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        detailCollection?.delegate = self
+        detailCollection?.dataSource = self
+        detailCollection?.backgroundColor = .clear
+        detailCollection?.translatesAutoresizingMaskIntoConstraints = false
         
-        collectionView?.register(HumanCollectionCell.self, forCellWithReuseIdentifier: HumanCollectionCell.identCell)
+        detailCollection?.register(DetailCollectionCell.self, forCellWithReuseIdentifier: DetailCollectionCell.identCell)
         
-        view.addSubview(collectionView ?? UICollectionView())
+        view.addSubview(detailCollection ?? UICollectionView())
     }
     
     private func createLayout() -> UICollectionViewLayout {
         
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, leyoutEnvironment)-> NSCollectionLayoutSection? in
-                return self.createHumanSection()
+                return self.createDetailSection()
             }
         return layout
     }
     
-    private func createHumanSection() -> NSCollectionLayoutSection {
+    private func createDetailSection() -> NSCollectionLayoutSection {
         
         let item = CompositionalLayout.createItem(width: .fractionalWidth(1.0), height: .fractionalHeight(1.0), spacing: 5)
         
@@ -45,21 +45,23 @@ extension HumanViewController {
     }
     
     
+    
+    
 }
 
-//  MARK: - CollectionViewDataSours, Delegate:
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 
-extension HumanViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemsData.count
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HumanCollectionCell.identCell, for: indexPath) as? HumanCollectionCell else {return UICollectionViewCell()}
-        cell.itemData = itemsData[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionCell.identCell, for: indexPath) as? DetailCollectionCell else {return UICollectionViewCell()}
+        
         return cell
     }
     
+    
 }
-
