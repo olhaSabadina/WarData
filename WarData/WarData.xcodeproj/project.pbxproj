@@ -37,8 +37,8 @@
 		2042BB4B2A993ABA00B3CF7F /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */; };
 		2042BB4D2A99536D00B3CF7F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB4C2A99536D00B3CF7F /* Date+Extensions.swift */; };
 		2042BB512A99DA0600B3CF7F /* DetailVC+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB502A99DA0600B3CF7F /* DetailVC+Collection.swift */; };
-		2042BB532A99DB8700B3CF7F /* DetailVC+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB522A99DB8700B3CF7F /* DetailVC+Table.swift */; };
 		2042BB562A99DD9700B3CF7F /* DetailCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB552A99DD9700B3CF7F /* DetailCollectionCell.swift */; };
+		2042BB5A2A9A1FBE00B3CF7F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB592A9A1FBE00B3CF7F /* Constants.swift */; };
 		9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9CB262A9790D5009F1620 /* Resource.swift */; };
 		9CE9CB2A2A9791F6009F1620 /* equipment.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB282A9791F5009F1620 /* equipment.json */; };
 		9CE9CB2B2A9791F6009F1620 /* personnel.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9CB292A9791F6009F1620 /* personnel.json */; };
@@ -77,8 +77,8 @@
 		2042BB4A2A993ABA00B3CF7F /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		2042BB4C2A99536D00B3CF7F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		2042BB502A99DA0600B3CF7F /* DetailVC+Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailVC+Collection.swift"; sourceTree = "<group>"; };
-		2042BB522A99DB8700B3CF7F /* DetailVC+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailVC+Table.swift"; sourceTree = "<group>"; };
 		2042BB552A99DD9700B3CF7F /* DetailCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionCell.swift; sourceTree = "<group>"; };
+		2042BB592A9A1FBE00B3CF7F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9CE9CB262A9790D5009F1620 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		9CE9CB282A9791F5009F1620 /* equipment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = equipment.json; sourceTree = "<group>"; };
 		9CE9CB292A9791F6009F1620 /* personnel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = personnel.json; sourceTree = "<group>"; };
@@ -165,6 +165,7 @@
 				9CE9CB262A9790D5009F1620 /* Resource.swift */,
 				201ABCFC2A96126C00A654C2 /* WarDataErrors.swift */,
 				2042BB0C2A97AC9800B3CF7F /* MainTableTitles.swift */,
+				2042BB592A9A1FBE00B3CF7F /* Constants.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -235,7 +236,6 @@
 			children = (
 				2042BB192A97F67C00B3CF7F /* DetailViewController.swift */,
 				2042BB502A99DA0600B3CF7F /* DetailVC+Collection.swift */,
-				2042BB522A99DB8700B3CF7F /* DetailVC+Table.swift */,
 				2042BB542A99DD6F00B3CF7F /* Cell */,
 			);
 			path = DetailScreen;
@@ -370,9 +370,9 @@
 				201ABCF72A960EC000A654C2 /* MainData.swift in Sources */,
 				2042BB0B2A97A9D400B3CF7F /* PersonnelData.swift in Sources */,
 				2042BB562A99DD9700B3CF7F /* DetailCollectionCell.swift in Sources */,
+				2042BB5A2A9A1FBE00B3CF7F /* Constants.swift in Sources */,
 				201ABCFD2A96126C00A654C2 /* WarDataErrors.swift in Sources */,
 				2042BB1A2A97F67C00B3CF7F /* DetailViewController.swift in Sources */,
-				2042BB532A99DB8700B3CF7F /* DetailVC+Table.swift in Sources */,
 				2042BB4B2A993ABA00B3CF7F /* DatePickerView.swift in Sources */,
 				201ABCD12A95119900A654C2 /* MainViewController.swift in Sources */,
 				2042BB272A98A1AF00B3CF7F /* CompositionalLayout.swift in Sources */,

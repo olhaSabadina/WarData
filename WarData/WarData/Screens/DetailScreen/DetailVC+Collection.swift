@@ -32,15 +32,12 @@ extension DetailViewController {
     private func createDetailSection() -> NSCollectionLayoutSection {
         
         let item = CompositionalLayout.createItem(width: .fractionalWidth(1.0), height: .fractionalHeight(1.0), spacing: 5)
-        
-        let groupHeight = UIScreen.main.bounds.height/1.45
-//        let groupWidth = groupHeight/1.6
-        
-        let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.89), height: .absolute(groupHeight), item: item, count: 1)
+                
+        let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.45), height: .fractionalHeight(0.75), item: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 16)
+        section.contentInsets = .init(top: 3, leading: 10, bottom: 10, trailing: 3)
         section.interGroupSpacing = 10
-        section.orthogonalScrollingBehavior = .paging
+        section.orthogonalScrollingBehavior = .continuous
         return section
     }
     
@@ -59,7 +56,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionCell.identCell, for: indexPath) as? DetailCollectionCell else {return UICollectionViewCell()}
-        
+       
         return cell
     }
     
