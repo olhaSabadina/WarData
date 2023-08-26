@@ -23,7 +23,7 @@
 		2042BB092A97A70400B3CF7F /* EquipmentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB082A97A70400B3CF7F /* EquipmentData.swift */; };
 		2042BB0B2A97A9D400B3CF7F /* PersonnelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0A2A97A9D400B3CF7F /* PersonnelData.swift */; };
 		2042BB0D2A97AC9800B3CF7F /* MainTableTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0C2A97AC9800B3CF7F /* MainTableTitles.swift */; };
-		2042BB0F2A97B26700B3CF7F /* PrepareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0E2A97B26700B3CF7F /* PrepareData.swift */; };
+		2042BB0F2A97B26700B3CF7F /* PrepareDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB0E2A97B26700B3CF7F /* PrepareDataManager.swift */; };
 		2042BB122A97E61800B3CF7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB112A97E61800B3CF7F /* UIView + Extensions.swift */; };
 		2042BB142A97E8A500B3CF7F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB132A97E8A500B3CF7F /* PaddingLabel.swift */; };
 		2042BB172A97F13300B3CF7F /* HumanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2042BB162A97F13300B3CF7F /* HumanViewController.swift */; };
@@ -63,7 +63,7 @@
 		2042BB082A97A70400B3CF7F /* EquipmentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentData.swift; sourceTree = "<group>"; };
 		2042BB0A2A97A9D400B3CF7F /* PersonnelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonnelData.swift; sourceTree = "<group>"; };
 		2042BB0C2A97AC9800B3CF7F /* MainTableTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableTitles.swift; sourceTree = "<group>"; };
-		2042BB0E2A97B26700B3CF7F /* PrepareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareData.swift; sourceTree = "<group>"; };
+		2042BB0E2A97B26700B3CF7F /* PrepareDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareDataManager.swift; sourceTree = "<group>"; };
 		2042BB112A97E61800B3CF7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		2042BB132A97E8A500B3CF7F /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		2042BB162A97F13300B3CF7F /* HumanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanViewController.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				201ABCF62A960EC000A654C2 /* MainData.swift */,
 				2042BB082A97A70400B3CF7F /* EquipmentData.swift */,
 				2042BB0A2A97A9D400B3CF7F /* PersonnelData.swift */,
-				2042BB0E2A97B26700B3CF7F /* PrepareData.swift */,
+				2042BB0E2A97B26700B3CF7F /* PrepareDataManager.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -366,7 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE9CB272A9790D5009F1620 /* Resource.swift in Sources */,
-				2042BB0F2A97B26700B3CF7F /* PrepareData.swift in Sources */,
+				2042BB0F2A97B26700B3CF7F /* PrepareDataManager.swift in Sources */,
 				201ABCF72A960EC000A654C2 /* MainData.swift in Sources */,
 				2042BB0B2A97A9D400B3CF7F /* PersonnelData.swift in Sources */,
 				2042BB562A99DD9700B3CF7F /* DetailCollectionCell.swift in Sources */,

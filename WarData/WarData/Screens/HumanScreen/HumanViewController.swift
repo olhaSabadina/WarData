@@ -44,14 +44,14 @@ class HumanViewController: UIViewController {
             guard indexPersonnale > 0 else {return}
             indexPersonnale -= 1
             if indexPersonnale == 0 {
-                itemsData = PrepareData.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: nil)
+                itemsData = PrepareDataManager.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: nil)
             } else {
-                itemsData = PrepareData.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
+                itemsData = PrepareDataManager.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
             }
         } else {
             guard indexPersonnale < giveMaxIndex() else {return}
             indexPersonnale += 1
-            itemsData = PrepareData.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
+            itemsData = PrepareDataManager.preparePersonnelArray(personnelData?[indexPersonnale], previousDay: personnelData?[indexPersonnale-1])
         }
     }
     
@@ -72,7 +72,7 @@ class HumanViewController: UIViewController {
         guard let index = personnelData?.firstIndex(where: {$0.date == personalDatum?.date}) else {return}
         indexPersonnale = index
         let indexRight = indexPersonnale == 0 ? 0 : indexPersonnale - 1
-        itemsData = PrepareData.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexRight])
+        itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexRight])
     }
     
     private func configureScreen() {

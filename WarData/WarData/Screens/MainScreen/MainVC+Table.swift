@@ -16,7 +16,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         mainTable.delegate = self
         mainTable.dataSource = self
         mainTable.showsVerticalScrollIndicator = false
-        
+        mainTable.rowHeight = 44
         mainTable.register(MainTableCell.self, forCellReuseIdentifier: MainTableCell.cellID)
         
         view.addSubview(mainTable)
@@ -46,6 +46,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             detailVC.personalDatum = personelDatum
             navigationController?.pushViewController(detailVC, animated: true)
         case .tank, .aircraft: let detailVC = DetailViewController()
+            //detailVC.equipment = .tank
             navigationController?.pushViewController(detailVC, animated: true)
         default: break
         }

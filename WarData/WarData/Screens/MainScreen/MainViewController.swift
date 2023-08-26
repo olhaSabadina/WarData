@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     var personelDatum: PersonnelDatum?
     var datePickerView: DatePickerView?
     var titleArray = MainTableTitles.titleArray
+    var equipmentData: EquipmentData?
     var rowData: [RowData] = [] {
         didSet {
             mainTable.reloadData()
@@ -83,7 +84,7 @@ class MainViewController: UIViewController {
     }
     
     private func createRowData() {
-        rowData = PrepareData.prepareDataToArray(titleArray, mainDatum: mainDatum, personnelDatum: personelDatum)
+        rowData = PrepareDataManager.prepareDataToArray(titleArray, mainDatum: mainDatum, personnelDatum: personelDatum)
         dateLabel.text = mainDatum?.date
         let text = "Day  \(mainDatum?.day ?? 0)  of the War"
         dayLabel.text = text
@@ -92,8 +93,10 @@ class MainViewController: UIViewController {
     private func getDataForTable() {
         mainData = networkManager.fetchData(resource: .main, of: MainData.self)
         personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
+        equipmentData = networkManager.fetchData(resource: .equipment, of: EquipmentData.self)
         mainDatum = mainData?.last
         personelDatum = personnelData?.last
+//        print(equipmentData?.filter{$0.equipmentUa == .aircrafts}.count ?? 0)
         createRowData()
     }
     

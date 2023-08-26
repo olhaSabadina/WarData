@@ -84,10 +84,8 @@ class MainTableCell: UITableViewCell {
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            imageEquipmentImageView.heightAnchor.constraint(equalToConstant: 44),
             imageEquipmentImageView.widthAnchor.constraint(equalTo: imageEquipmentImageView.heightAnchor),
             imageEquipmentImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
-
 }
