@@ -38,5 +38,5 @@ If you find a bug or remark in the code or when the program is running, please e
 ### Why did I write this project?
 ___
 There is a war going on in our country and every loss of an enemy brings our victory closer.
-I wrote this project with the help of the knowledge gained during the course on [Foxminded](https://lms.foxminded.ua/my/) по Swift
+I wrote this project with the help of the knowledge gained during the course on [Foxminded](https://foxminded.ua) по Swift
 
