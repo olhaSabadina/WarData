@@ -24,7 +24,8 @@ As an addition, the ability to select the date for displaying statistics has bee
 
 <img src="./Screenshot/pushDate.png" alt="drawing" width="200"/>
 <img src="./Screenshot/date.png" alt="drawing" width="200"/>
-
+![mainPush](https://github.com/olhaSabadina/WarData/blob/main/Screenshot/pushDate.png)
+![mainPush](https://github.com/olhaSabadina/WarData/blob/main/Screenshot/pushDate.png)
 
 ## Screenshots:
 
