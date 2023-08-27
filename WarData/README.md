@@ -1,8 +1,7 @@
-# Website Filter
-Простенькая программка для просмотра веб страниц с возможностью блокировки открытия или поиска ссылок, в которых будут присутствовать слова из фильтра.
-Пользователь имеет возможность добавлять и удалять слова - ограничения.
+# War Statistics
+A program for viewing statistics of enemy losses with the ability to open additional information on losses for each type of equipment. The user has the ability to view statistics for any day of the war by selecting the appropriate date.
 
-## Содержание
+## Сontent
 - [Технологии](#технологии)
 - [Дополнительно](#дополнительно)
 - [Скриншоты](#скриншоты-программы)
