@@ -1,14 +1,14 @@
-# War Statistics
-Program for viewing statistics of enemy losses in equipment and manpower.
-The user has the ability to choose the date the statistics are displayed.
+# Website Filter
+Простенькая программка для просмотра веб страниц с возможностью блокировки открытия или поиска ссылок, в которых будут присутствовать слова из фильтра.
+Пользователь имеет возможность добавлять и удалять слова - ограничения.
 
-## Content
-- [Technologies](#technologies)
-- [Additionally](#additionally)
-- [Screenshots](#screenshots)
+## Содержание
+- [Технологии](#технологии)
+- [Дополнительно](#дополнительно)
+- [Скриншоты](#скриншоты-программы)
 - [Contributing](#contributing)
 
-## Technologies
+## Технологии
 - Swift
 - UIKit
 - Code-only layout
@@ -16,30 +16,30 @@ The user has the ability to choose the date the statistics are displayed.
 - WebKit
 - MVC
 - Without storyboard
-- JSON 
--Table and CollectionViews
 
-## Additionally
-As an addition, the ability to select the date for displaying statistics has been added. To do this, click on the date on the first screen at the top of the screen. (as in the screenshot below)
+## Дополнительно
+В качестве дополнения добавлено правило для фильтра: минимум два символа и без пробелов.
+Испльзовалось: Regular expression
+```sh
+"^([a-zA-Zа-яА-Я]{1,}[^ ])$"
+```
 
-<img src="./Screenshot/pushDate.png" alt="drawing" width="250"/>
-<img src="./Screenshot/date.png" alt="drawing" width="250"/>
+## Скриншоты программы:
 
+<img src="./Screenshot/Screenshot%202023-06-14%20at%2020.28.28.png" alt="drawing" width="250"/>
+<img src="./Screenshot/Screenshot%202023-06-14%20at%2020.30.04.png" alt="drawing" width="250"/>
+<img src="./Screenshot/Screenshot%202023-06-14%20at%2020.31.44.png" alt="drawing" width="250"/>
 
-## Screenshots:
-
-<img src="./Screenshot/main.png" alt="drawing" width="250"/>
-<img src="./Screenshot/date.png" alt="drawing" width="250"/>
-<img src="./Screenshot/human.png" alt="drawing" width="250"/>
-<img src="./Screenshot/technics.png" alt="drawing" width="250"/>
+<img src="./Screenshot/Screenshot%202023-06-14%20at%2020.33.20.png" alt="drawing" width="250"/>
+<img src="./Screenshot/Screenshot%202023-06-14%20at%2020.33.35.png" alt="drawing" width="250"/>
+<img src="./Screenshot/Screenshot%202023-06-14%20at%2020.34.19.png" alt="drawing" width="250"/>
 
 ## Contributing
-If you find a bug or remark in the code or when the program is running, please email me:
-<a href="mailto:olga.sabadina@icloud.com">olga.sabadina@icloud.com</a></p>
+Если вы нашли баг или замечание в коде или при работе программы, пожалуйста напишите мне на почту:
+<a href="mailto:sud85@outlook.com">sud85@outlook.com</a></p>
 
 
-### Why did I write this project?
+### Зачем вы разработали этот проект?
 ___
-There is a war going on in our country and every loss of an enemy brings our victory closer.
-I wrote this project with the help of the knowledge gained during the course on [Foxminded]((https://lms.foxminded.ua/my/)) по Swift
+В учебных целях. При прохождении курса [Foxminded]((https://lms.foxminded.ua/my/)) по Swift
 
