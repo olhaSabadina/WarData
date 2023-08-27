@@ -34,7 +34,6 @@ extension HumanViewController {
         let item = CompositionalLayout.createItem(width: .fractionalWidth(1.0), height: .fractionalHeight(1.0), spacing: 5)
         
         let groupHeight = UIScreen.main.bounds.height/1.45
-//        let groupWidth = groupHeight/1.6
         
         let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.89), height: .absolute(groupHeight), item: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
@@ -43,8 +42,6 @@ extension HumanViewController {
         section.orthogonalScrollingBehavior = .paging
         return section
     }
-    
-    
 }
 
 //  MARK: - CollectionViewDataSours, Delegate:
@@ -60,6 +57,5 @@ extension HumanViewController: UICollectionViewDataSource, UICollectionViewDeleg
         cell.itemData = itemsData[indexPath.item]
         return cell
     }
-    
 }
 

@@ -11,15 +11,14 @@ class DetailCollectionCell: UICollectionViewCell {
     
     static var identCell = "DetailCollectionCell"
    
-    let imageView = UIImageView()
-    let modelLabel = UILabel()
-    let nameEquipment = UILabel()
+    private let imageView = UIImageView()
+    private let modelLabel = UILabel()
+    private let nameEquipment = UILabel()
     var equipmentFilterData: EquipmentFilterData? {
         didSet {
             setValueForCell()
         }
     }
-    
     
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -43,14 +42,14 @@ class DetailCollectionCell: UICollectionViewCell {
         self.cornerRadius(radius: 10, backColor: .gray.withAlphaComponent(0.5))
     }
     
-    func setImage() {
+    private func setImage() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "airplane")
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
     }
     
-    func setModelLabel() {
+    private func setModelLabel() {
         let arrayLabel = [nameEquipment, modelLabel]
         arrayLabel.forEach { label in
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +63,7 @@ class DetailCollectionCell: UICollectionViewCell {
         modelLabel.numberOfLines = 3
     }
     
-    func setConstreints() {
+    private func setConstreints() {
         NSLayoutConstraint.activate([
             nameEquipment.topAnchor.constraint(equalTo: topAnchor, constant: 5),
             nameEquipment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

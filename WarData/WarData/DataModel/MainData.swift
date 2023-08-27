@@ -72,5 +72,4 @@ struct MainDatum: Codable {
         }
         return result
     }
-    
 }
