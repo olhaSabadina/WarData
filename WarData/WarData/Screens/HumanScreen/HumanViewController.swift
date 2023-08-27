@@ -15,9 +15,10 @@ class HumanViewController: UIViewController {
     private var stack = UIStackView()
     private var dateLabel = UILabel()
     private var indexPersonnale = 0
+    
     var collectionView : UICollectionView?
     var personnelData: PersonnelData?
-    var personalDatum: PersonnelDatum?
+    var personalDatum: PersonnelDataObject?
     var itemsData: [HumanItemData] = [] {
         didSet {
             configureScreen()
@@ -50,7 +51,9 @@ class HumanViewController: UIViewController {
                 personalDatum = personnelData?[indexPersonnale]
                 itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexPersonnale-1])
             }
+            
         } else {
+            
             guard indexPersonnale < giveMaxIndex() else {return}
             indexPersonnale += 1
             personalDatum = personnelData?[indexPersonnale]
@@ -93,10 +96,9 @@ class HumanViewController: UIViewController {
     
     private func setDateLabel() {
         dateLabel = PaddingLabel(withInsets: 5, 5, 15, 15)
-        dateLabel.font = UIFont(name: "DS-Digital-Bold", size: 28)
+        dateLabel.font = UIFont.digiFont(ofSize: 28)
         dateLabel.textAlignment = .center
         dateLabel.textColor = .white
-        dateLabel.text = "2023-05-08"
     }
     
     private func setButtons() {

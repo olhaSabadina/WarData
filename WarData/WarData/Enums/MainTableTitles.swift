@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MainTableTitles: String, CaseIterable {
+enum MainTableTitles: String, CaseIterable {
     case personnel = "Ліквідовано загарбників"
     case aircraft = "Літаків"
     case helicopter = "Гелікоптерів"

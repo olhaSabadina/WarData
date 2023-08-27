@@ -15,9 +15,8 @@ extension DetailViewController {
         detailCollection?.dataSource = self
         detailCollection?.backgroundColor = .clear
         detailCollection?.translatesAutoresizingMaskIntoConstraints = false
-        
+        //register cell
         detailCollection?.register(DetailCollectionCell.self, forCellWithReuseIdentifier: DetailCollectionCell.identCell)
-        
         view.addSubview(detailCollection ?? UICollectionView())
     }
     

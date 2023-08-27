@@ -16,12 +16,14 @@ class HumanCollectionCell: UICollectionViewCell {
     private let valueLabel = UILabel()
     private let dailyLoss = UILabel()
     private var stack = UIStackView()
+   
     var itemData: HumanItemData? {
         didSet {
             setValueForCell()
         }
     }
     
+//MARK: - init
     override init(frame: CGRect) {
         super .init(frame: frame)
         configureCell()
@@ -32,6 +34,7 @@ class HumanCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+//MARK: - private function:
     private func setValueForCell() {
         guard let itemData = itemData else {return}
         imageView.image = UIImage(named: itemData.image)
@@ -58,7 +61,7 @@ class HumanCollectionCell: UICollectionViewCell {
     }
     
     private func setDayLabel() {
-        dayLabel.font = UIFont(name: "DS-Digital-Bold", size: 26)
+        dayLabel.font = UIFont.digiFont(ofSize: 26)
         dayLabel.textAlignment = .center
         dayLabel.textColor = .white
     }
@@ -68,7 +71,7 @@ class HumanCollectionCell: UICollectionViewCell {
         dailyLoss.textColor = .white
         dailyLoss.textAlignment = .center
         
-        valueLabel.font = UIFont(name: "DS-Digital-Bold", size: 47)
+        valueLabel.font = UIFont.digiFont(ofSize: 47)
         valueLabel.textAlignment = .center
         valueLabel.textColor = .yellow
         valueLabel.numberOfLines = 0

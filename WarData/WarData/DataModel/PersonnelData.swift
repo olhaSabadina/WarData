@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias PersonnelData = [PersonnelDatum]
+typealias PersonnelData = [PersonnelDataObject]
 
-struct PersonnelDatum: Codable {
+struct PersonnelDataObject: Codable {
     let date: String
     let day, personnel: Int
     let personnelDatumPersonnel: Personnel

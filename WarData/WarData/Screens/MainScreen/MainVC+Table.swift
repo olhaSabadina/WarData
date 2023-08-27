@@ -9,7 +9,6 @@ import UIKit
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func setMainTable() {
         mainTable.translatesAutoresizingMaskIntoConstraints = false
         mainTable.backgroundColor = .clear
@@ -18,9 +17,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         mainTable.showsVerticalScrollIndicator = false
         mainTable.rowHeight = 44
         mainTable.register(MainTableCell.self, forCellReuseIdentifier: MainTableCell.cellID)
-        
         view.addSubview(mainTable)
-        
     }
     
 // MARK: - TableView Delegate, DataSource

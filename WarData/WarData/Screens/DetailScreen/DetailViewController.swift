@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     private var infoStack = UIStackView()
     private var equipmentData: EquipmentData?
     private let networkManager = NetworkManager()
+    
     var detailCollection: UICollectionView?
     var filterTypeValue = EquipmentUa.aircrafts
     var equipArray = [EquipmentFilterData]() {
@@ -24,6 +25,8 @@ class DetailViewController: UIViewController {
         }
     }
  
+//MARK: - Life cycle:
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -33,12 +36,15 @@ class DetailViewController: UIViewController {
         setConstraints()
     }
     
+//MARK: - Function:
     func selValueForStackLabel(data: EquipmentFilterData?) {
         guard let data = data else {return}
         modelLabel.text = data.model
         lossesLabel.text = "\(data.losses)"
         manufacturerLabel.text = data.manufacture
     }
+    
+//MARK: - private function:
     
     private func getDataForCollection() {
         equipmentData = networkManager.fetchData(resource: .equipment, of: EquipmentData.self)
@@ -50,8 +56,7 @@ class DetailViewController: UIViewController {
         backgroundImageView.image = ImageConstants.background
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backgroundImageView)
-        
-        title = "Обладнання"
+        title = Constants.titleScreenEquipment
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isHidden = false
@@ -60,14 +65,14 @@ class DetailViewController: UIViewController {
     private func setInfoStack() {
         let labelsArray = [modelLabel, manufacturerLabel, lossesLabel]
         labelsArray.forEach { label in
-            label.font = UIFont(name: "DS-Digital-Bold", size: 25)
+            label.font = UIFont.digiFont(ofSize: 25)
             label.textColor = .yellow
             label.numberOfLines = 0
         }
         for (index, value) in labelsArray.enumerated() {
             let titleLabel = UILabel()
-            titleLabel.text = Constant.arrayLabel[index]
-            titleLabel.font = UIFont(name: "DS-Digital-Bold", size: 18)
+            titleLabel.text = Constants.arrayLabel[index]
+            titleLabel.font = UIFont.digiFont(ofSize: 18)
             titleLabel.textAlignment = .right
             titleLabel.textColor = .yellow
             let stackH = UIStackView(arrangedSubviews: [titleLabel, value])

@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     private let networkManager = NetworkManager()
     private var mainData: MainData?
-    private var mainDatum: MainDatum?
+    private var mainDataObject: MainDataObject?
     private var datePickerView: DatePickerView?
     private var titleArray = MainTableTitles.titleArray
     let backgroundImageView = UIImageView()
@@ -19,13 +19,15 @@ class MainViewController: UIViewController {
     var dateLabel = UILabel()
     var dayLabel = UILabel()
     var personnelData: PersonnelData?
-    var personelDatum: PersonnelDatum?
+    var personelDatum: PersonnelDataObject?
     var rowData: [RowData] = [] {
         didSet {
             mainTable.reloadData()
         }
     }
 
+//MARK: - Life Cycle:
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configView()
@@ -54,7 +56,7 @@ class MainViewController: UIViewController {
     
     @objc func openDatePicker(sender:UITapGestureRecognizer) {
         datePickerView = DatePickerView(frame: self.view.frame)
-        datePickerView?.datePickerSelectDate = mainDatum?.date.transformStringToDate()
+        datePickerView?.datePickerSelectDate = mainDataObject?.date.transformStringToDate()
         datePickerView?.maximumDate = mainData?.last?.date.transformStringToDate()
         datePickerView?.minimumDate = mainData?.first?.date.transformStringToDate()
         datePickerView?.cancelButton.addTarget(self, action: #selector(closeDatePickerView), for: .touchUpInside)
@@ -66,17 +68,17 @@ class MainViewController: UIViewController {
         guard let datePickerView = datePickerView else {return}
         let selectedDate = datePickerView.datePicker.date
         let searchDateString = selectedDate.formateDate()
-        findMainDatumForDate(dateString: searchDateString)
+        findMainDataObjectForDate(dateString: searchDateString)
         createRowData()
         closeDatePickerView()
     }
     
-//MARK: - Function:
+//MARK: - private Function:
     
-    private func findMainDatumForDate(dateString: String) {
-        mainDatum = mainData?.first(where: {$0.date == dateString})
+    private func findMainDataObjectForDate(dateString: String) {
+        mainDataObject = mainData?.first(where: {$0.date == dateString})
         personelDatum = personnelData?.first(where: {$0.date == dateString})
-        guard mainDatum != nil, personelDatum != nil else {
+        guard mainDataObject != nil, personelDatum != nil else {
             alertDataNotFound()
             return
         }
@@ -89,16 +91,16 @@ class MainViewController: UIViewController {
     }
     
     private func createRowData() {
-        rowData = PrepareDataManager.prepareDataToArray(titleArray, mainDatum: mainDatum, personnelDatum: personelDatum)
-        dateLabel.text = mainDatum?.date
-        let text = "Day  \(mainDatum?.day ?? 0)  of the War"
+        rowData = PrepareDataManager.prepareDataToArray(titleArray, mainDataObject: mainDataObject, personnelDatum: personelDatum)
+        dateLabel.text = mainDataObject?.date
+        let text = "Day \(mainDataObject?.day ?? 0) of war"
         dayLabel.text = text
     }
     
     private func getDataForTable() {
         mainData = networkManager.fetchData(resource: .main, of: MainData.self)
         personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
-        mainDatum = mainData?.last
+        mainDataObject = mainData?.last
         personelDatum = personnelData?.last
         createRowData()
     }
@@ -108,7 +110,6 @@ class MainViewController: UIViewController {
             dateLabel.isUserInteractionEnabled = true
             dateLabel.addGestureRecognizer(tap)
     }
-    
 }
     
     

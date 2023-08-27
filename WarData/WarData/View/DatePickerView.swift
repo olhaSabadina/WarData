@@ -9,18 +9,22 @@ import UIKit
 
 class DatePickerView: UIView {
     
-    private var view = UIView()
     private let titleLabel = UILabel()
+    private let view = UIView()
+    
     let datePicker = UIDatePicker()
     let okButton = UIButton(type: .system)
     let cancelButton = UIButton(type: .system)
+    var maximumDate: Date?
+    var datePickerSelectDate: Date?
+    
     var minimumDate: Date? {
         didSet {
             configureDatePicker()
         }
     }
-    var maximumDate: Date?
-    var datePickerSelectDate: Date?
+   
+//MARK: - init:
     
     override init(frame: CGRect) {
         super .init(frame: frame)
@@ -34,6 +38,7 @@ class DatePickerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+//MARK: - private function:
     private func setUpView() {
         addSubview(view)
         view.addSubview(datePicker)
@@ -74,10 +79,10 @@ class DatePickerView: UIView {
     }
     
     private func configureTitleLabel() {
-        titleLabel.text = "Оберіть день для пошуку втрат у віні"
+        titleLabel.text = "Оберіть день для пошуку втрат у війні:"
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont(name: "Regular", size: 15)
+        titleLabel.font = UIFont.digiFont(ofSize: 18)
     }
     
     private func configureButtons() {

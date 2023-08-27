@@ -15,16 +15,14 @@ class MainTableCell: UITableViewCell {
     private let numberOfLossesLabel = UILabel()
     private let imageEquipmentImageView = UIImageView()
     private var stack = UIStackView()
+    
     var rowData: RowData? {
         didSet{
             configureCell()
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+//MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setStackLables()
@@ -33,6 +31,12 @@ class MainTableCell: UITableViewCell {
         setConstreints()
         backgroundColor = .clear
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+//MARK: - private function:
     
    private func setStackView() {
         stack = UIStackView(arrangedSubviews: [nameEquipmentLabel, imageEquipmentImageView, numberOfLossesLabel])
@@ -55,7 +59,7 @@ class MainTableCell: UITableViewCell {
         numberOfLossesLabel.adjustsFontSizeToFitWidth = true
         numberOfLossesLabel.textAlignment = .left
         numberOfLossesLabel.textColor = .systemYellow
-        numberOfLossesLabel.font = UIFont(name: "DS-Digital-Bold", size: 30)
+        numberOfLossesLabel.font = UIFont.digiFont(ofSize: 30)
     }
     
     private func configureCell() {

@@ -42,6 +42,7 @@ extension MainViewController {
         ])
     }
     
+//MARK: - private function
     private func setupView() {
         view.backgroundColor = .systemBackground
     }
@@ -71,7 +72,6 @@ extension MainViewController {
         dayLabel.textColor = .lightGray
         view.addSubview(dayLabel)
     }
-    
 }
 
 

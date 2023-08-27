@@ -19,7 +19,8 @@ class DetailCollectionCell: UICollectionViewCell {
             setValueForCell()
         }
     }
-    
+
+//MARK: - init:
     override init(frame: CGRect) {
         super .init(frame: frame)
         configureCell()
@@ -31,6 +32,8 @@ class DetailCollectionCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+//MARK: - private functions:
     
     private func setValueForCell() {
         imageView.image = UIImage(named: equipmentFilterData?.nameEquipment ?? "no-photo")
@@ -44,7 +47,6 @@ class DetailCollectionCell: UICollectionViewCell {
     
     private func setImage() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "airplane")
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
     }

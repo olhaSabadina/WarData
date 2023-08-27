@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias MainData = [MainDatum]
+typealias MainData = [MainDataObject]
 
-struct MainDatum: Codable {
+struct MainDataObject: Codable {
     let date: String
     let day, aircraft, helicopter, tank: Int
     let apc, fieldArtillery, mrl: Int
@@ -36,7 +36,7 @@ struct MainDatum: Codable {
         case cruiseMissiles = "cruise missiles"
     }
     
-    var mainDatumArrayForShow: [String?] {
+    var mainDataObjectArrayForShow: [String?] {
         var result: [String?] = []
         for i in MainTableTitles.allCases {
             var value: String? = ""

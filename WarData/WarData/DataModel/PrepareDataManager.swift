@@ -29,9 +29,9 @@ struct EquipmentFilterData {
 
 struct PrepareDataManager {
     
-    static func prepareDataToArray(_ titleArrayForShow: [String], mainDatum: MainDatum?, personnelDatum: PersonnelDatum?) -> [RowData] {
-        guard let mainDatum = mainDatum, let personnelDatum = personnelDatum else {return []}
-        let mainDatumArrayForShow = mainDatum.mainDatumArrayForShow
+    static func prepareDataToArray(_ titleArrayForShow: [String], mainDataObject: MainDataObject?, personnelDatum: PersonnelDataObject?) -> [RowData] {
+        guard let mainDataObject = mainDataObject, let personnelDatum = personnelDatum else {return []}
+        let mainDataObjectArrayForShow = mainDataObject.mainDataObjectArrayForShow
         var resultRowData = [RowData]()
         
         for (index, text) in titleArrayForShow.enumerated() {
@@ -39,7 +39,7 @@ struct PrepareDataManager {
             if index == 0 {
                 value = "\(personnelDatum.personnel)"
             } else {
-                value = mainDatumArrayForShow[index]
+                value = mainDataObjectArrayForShow[index]
             }
             
             let rowData = RowData(title: text,
@@ -50,7 +50,7 @@ struct PrepareDataManager {
         return resultRowData
     }
     
-    static func preparePersonnelArray(_ personnalDatum: PersonnelDatum?, previousDay: PersonnelDatum?) -> [HumanItemData] {
+    static func preparePersonnelArray(_ personnalDatum: PersonnelDataObject?, previousDay: PersonnelDataObject?) -> [HumanItemData] {
         var array = [HumanItemData]()
         guard let personnalDatum = personnalDatum else { return array}
         for i in ImageForPersonnel.allCases {

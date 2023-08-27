@@ -15,9 +15,8 @@ extension HumanViewController {
         collectionView?.dataSource = self
         collectionView?.backgroundColor = .clear
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
-        
+        //register cell
         collectionView?.register(HumanCollectionCell.self, forCellWithReuseIdentifier: HumanCollectionCell.identCell)
-        
         view.addSubview(collectionView ?? UICollectionView())
     }
     

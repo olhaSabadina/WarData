@@ -7,9 +7,9 @@
 
 import Foundation
 
-typealias EquipmentData = [EquipmentDatum]
+typealias EquipmentData = [EquipmentDataObject]
 
-struct EquipmentDatum: Codable {
+struct EquipmentDataObject: Codable {
     let equipmentOryx, model: String
     let manufacturer: Manufacturer
     let lossesTotal: Int
