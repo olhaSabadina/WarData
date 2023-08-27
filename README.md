@@ -17,7 +17,7 @@ The user has the ability to choose the date the statistics are displayed.
 - MVC
 - Without storyboard
 - JSON 
--Table and CollectionViews
+- Table and CollectionViews
 
 ## Additionally
 As an addition, the ability to select the date for displaying statistics has been added. To do this, click on the date on the first screen at the top of the screen. (as in the screenshot below)
