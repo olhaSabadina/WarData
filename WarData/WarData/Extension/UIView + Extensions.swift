@@ -2,9 +2,6 @@
 import Foundation
 import UIKit
 
-//This extension UIView is intended for configuring the shift schedule.
-//Used in the ScheduleConstructor
-
 extension UIView {
    
     func addShadow(cornerRadius: CGFloat, offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {

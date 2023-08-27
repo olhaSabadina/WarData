@@ -7,6 +7,8 @@
 
 import Foundation
 
+let withExtension = "json"
+
 enum Resource: String {
     case main
     case equipment
@@ -18,14 +20,14 @@ struct NetworkManager {
     //in Future write URLDataTask for fetch data from online server...
     func fetchData<T: Codable>(resource: Resource, of type: T.Type) -> T? {
 
-        guard let url = Bundle.main.url(forResource: resource.rawValue, withExtension: "json") else { print("file not find")
+        guard let url = Bundle.main.url(forResource: resource.rawValue, withExtension: withExtension) else { print(WarDataNetworkErrors.invalidData)
             return nil }
         do {
             let data = try Data(contentsOf: url)
             let dataModel = self.parseJSON(of: type, data: data)
             return dataModel
         } catch {
-            print("not catch")
+            print(WarDataNetworkErrors.invalidData)
         }
         return nil
     }
@@ -37,7 +39,7 @@ struct NetworkManager {
             return mainData
             
         } catch {
-            print(WarDataErrors.errorParsing)
+            print(WarDataNetworkErrors.errorParsing)
         }
         return nil
     }

@@ -29,7 +29,7 @@ struct EquipmentFilterData {
 
 struct PrepareDataManager {
     
-    static func prepareDataToArray(_ titleArrayForShow: [String], mainDataObject: MainDataObject?, personnelDatum: PersonnelDataObject?) -> [RowData] {
+    static func mapMainDataToRowData(_ titleArrayForShow: [String], mainDataObject: MainDataObject?, personnelDatum: PersonnelDataObject?) -> [RowData] {
         guard let mainDataObject = mainDataObject, let personnelDatum = personnelDatum else {return []}
         let mainDataObjectArrayForShow = mainDataObject.mainDataObjectArrayForShow
         var resultRowData = [RowData]()
@@ -50,9 +50,9 @@ struct PrepareDataManager {
         return resultRowData
     }
     
-    static func preparePersonnelArray(_ personnalDatum: PersonnelDataObject?, previousDay: PersonnelDataObject?) -> [HumanItemData] {
+    static func mapPersonnelDataToHumanItem(_ personnalDatum: PersonnelDataObject?, previousDay: PersonnelDataObject?) -> [HumanItemData] {
+        guard let personnalDatum = personnalDatum else { return []}
         var array = [HumanItemData]()
-        guard let personnalDatum = personnalDatum else { return array}
         for i in ImageForPersonnel.allCases {
             var value: String
             var lossDay = 0
@@ -66,23 +66,25 @@ struct PrepareDataManager {
                 value = "полоненних\n \(personnalDatum.pow ?? 0)"
             }
             
-            let item = HumanItemData(image: i.rawValue, value: "\(value)", day: "\(personnalDatum.day)", dailyLoss: lossDay)
+            let item = HumanItemData(image: i.rawValue,
+                                     value: "\(value)",
+                                     day: "\(personnalDatum.day)",
+                                     dailyLoss: lossDay)
             array.append(item)
         }
         return array
     }
     
-    static func prepareEquipmentData(_ equipmentData: EquipmentData?, typeEquipment: EquipmentUa) -> [EquipmentFilterData] {
-        
+    static func mapEquipmentDataForFilterData(_ equipmentData: EquipmentData?, typeEquipment: EquipmentUa) -> [EquipmentFilterData] {
+        guard let equipmentData = equipmentData else {return []}
         var resultArray = [EquipmentFilterData]()
+        let equipmensFiltered = equipmentData.filter{$0.equipmentUa == typeEquipment}
         
-        guard let equipmentData = equipmentData else {return resultArray}
-        
-        let equipmentArrayFiltered = equipmentData.filter{$0.equipmentUa == typeEquipment}
-        
-        for equip in equipmentArrayFiltered {
-            let item = EquipmentFilterData(nameEquipment: equip.equipmentUa.rawValue, model: equip.model, manufacture: equip.manufacturer.rawValue, losses: equip.lossesTotal)
-            
+        for equip in equipmensFiltered {
+            let item = EquipmentFilterData(nameEquipment: equip.equipmentUa.rawValue,
+                                           model: equip.model,
+                                           manufacture: equip.manufacturer.rawValue,
+                                           losses: equip.lossesTotal)
             resultArray.append(item)
         }
         return resultArray

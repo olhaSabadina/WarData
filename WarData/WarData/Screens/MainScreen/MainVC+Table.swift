@@ -9,7 +9,7 @@ import UIKit
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func setMainTable() {
+    func setupMainTable() {
         mainTable.translatesAutoresizingMaskIntoConstraints = false
         mainTable.backgroundColor = .clear
         mainTable.delegate = self
@@ -36,7 +36,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
 
-        let titleItem = MainTableTitles.allCases[indexPath.row]
+        let titleItem = MainTableTitlesData.allCases[indexPath.row]
         let detailVC = DetailViewController()
         
         switch titleItem {
@@ -44,7 +44,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case .personnel:
             let humanVC = HumanViewController()
             humanVC.personnelData = personnelData
-            humanVC.personalDatum = personelDatum
+            humanVC.personnelDataObject = personelDatum
             navigationController?.pushViewController(humanVC, animated: true)
             return
             
@@ -73,8 +73,3 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
-
-
-    
-
-

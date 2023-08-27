@@ -26,4 +26,3 @@ enum Personnel: String, Codable {
     case about = "about"
     case more = "more"
 }
-

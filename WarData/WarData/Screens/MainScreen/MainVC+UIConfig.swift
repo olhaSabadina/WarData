@@ -11,12 +11,12 @@ import UIKit
 
 extension MainViewController {
     
-    func configView() {
-        setupView()
-        setBackgroundImageView()
-        setDateLabel()
-        setDayLabel()
-        setMainTable()
+    func configureMainScreenView() {
+        setupMainView()
+        setupMainBackgroundImageView()
+        setupDateLabel()
+        setupDayLabel()
+        setupMainTable()
     }
     
     func setConstreints() {
@@ -43,17 +43,17 @@ extension MainViewController {
     }
     
 //MARK: - private function
-    private func setupView() {
+    private func setupMainView() {
         view.backgroundColor = .systemBackground
     }
      
-    private func setBackgroundImageView() {
-        backgroundImageView.image = ImageConstants.background
+    private func setupMainBackgroundImageView() {
+        backgroundImageView.image = ImageConstants.backgroundForMainDetailScreens
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backgroundImageView)
     }
     
-    private func setDateLabel() {
+    private func setupDateLabel() {
         dateLabel = PaddingLabel(withInsets: 5, 5, 15, 15)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = .boldSystemFont(ofSize: 25)
@@ -62,7 +62,7 @@ extension MainViewController {
         view.addSubview(dateLabel)
     }
     
-    private func setDayLabel() {
+    private func setupDayLabel() {
         dayLabel = PaddingLabel(withInsets: 3, 3, 10, 10)
         dayLabel.translatesAutoresizingMaskIntoConstraints = false
         dayLabel.font = .boldSystemFont(ofSize: 18)
@@ -73,5 +73,3 @@ extension MainViewController {
         view.addSubview(dayLabel)
     }
 }
-
-

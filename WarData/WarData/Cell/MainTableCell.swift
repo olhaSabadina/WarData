@@ -11,16 +11,15 @@ class MainTableCell: UITableViewCell {
     
     static let cellID = "MainTableCell"
     
-    private let nameEquipmentLabel = UILabel()
-    private let numberOfLossesLabel = UILabel()
-    private let imageEquipmentImageView = UIImageView()
-    private var stack = UIStackView()
-    
     var rowData: RowData? {
         didSet{
             configureCell()
         }
     }
+    private let nameEquipmentLabel = UILabel()
+    private let numberOfLossesLabel = UILabel()
+    private let equipmentImageView = UIImageView()
+    private var stack = UIStackView()
     
 //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -39,7 +38,7 @@ class MainTableCell: UITableViewCell {
 //MARK: - private function:
     
    private func setStackView() {
-        stack = UIStackView(arrangedSubviews: [nameEquipmentLabel, imageEquipmentImageView, numberOfLossesLabel])
+        stack = UIStackView(arrangedSubviews: [nameEquipmentLabel, equipmentImageView, numberOfLossesLabel])
         stack.axis = .horizontal
         stack.spacing = 20
         stack.distribution = .fill
@@ -65,12 +64,12 @@ class MainTableCell: UITableViewCell {
     private func configureCell() {
         nameEquipmentLabel.text = rowData?.title
         numberOfLossesLabel.text = rowData?.value
-        imageEquipmentImageView.image = UIImage(named: rowData?.image ?? "no-photo")
+        equipmentImageView.image = UIImage(named: rowData?.image ?? "no-photo")
     }
     
     private func setStackImage() {
-        imageEquipmentImageView.contentMode = .scaleAspectFit
-        imageEquipmentImageView.backgroundColor = .gray.withAlphaComponent(0.3)
+        equipmentImageView.contentMode = .scaleAspectFit
+        equipmentImageView.backgroundColor = .gray.withAlphaComponent(0.3)
     }
     
     private func setConstreints() {
@@ -81,8 +80,8 @@ class MainTableCell: UITableViewCell {
             stack.leadingAnchor.constraint(equalTo: leadingAnchor),
             stack.trailingAnchor.constraint(equalTo: trailingAnchor),
             
-            imageEquipmentImageView.widthAnchor.constraint(equalTo: imageEquipmentImageView.heightAnchor),
-            imageEquipmentImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
+            equipmentImageView.widthAnchor.constraint(equalTo: equipmentImageView.heightAnchor),
+            equipmentImageView.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
 }

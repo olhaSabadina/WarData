@@ -9,16 +9,16 @@ import UIKit
 
 class DetailCollectionCell: UICollectionViewCell {
     
-    static var identCell = "DetailCollectionCell"
+    static var cellID = "DetailCollectionCell"
    
-    private let imageView = UIImageView()
-    private let modelLabel = UILabel()
-    private let nameEquipment = UILabel()
     var equipmentFilterData: EquipmentFilterData? {
         didSet {
             setValueForCell()
         }
     }
+    private let imageView = UIImageView()
+    private let modelLabel = UILabel()
+    private let nameEquipment = UILabel()
 
 //MARK: - init:
     override init(frame: CGRect) {

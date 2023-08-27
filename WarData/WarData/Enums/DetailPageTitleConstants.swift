@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum Constants {
+enum DetailPageTitleConstants {
     static let arrayLabel = ["Модель:", "Виробник:", "Знищено:"]
     static let titleScreenEquipment = "Обладнання"
+    static let titleScreenHuman = "Особовий склад"
 }

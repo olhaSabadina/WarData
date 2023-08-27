@@ -9,19 +9,18 @@ import UIKit
 
 class HumanCollectionCell: UICollectionViewCell {
    
-    static var identCell = "HumanCollectionCell"
+    static var cellID = "HumanCollectionCell"
     
-    private let imageView = UIImageView()
-    private let dayLabel = UILabel()
-    private let valueLabel = UILabel()
-    private let dailyLoss = UILabel()
-    private var stack = UIStackView()
-   
     var itemData: HumanItemData? {
         didSet {
             setValueForCell()
         }
     }
+    private let imageView = UIImageView()
+    private let dayLabel = UILabel()
+    private let valueLabel = UILabel()
+    private let dailyLoss = UILabel()
+    private var stack = UIStackView()
     
 //MARK: - init
     override init(frame: CGRect) {

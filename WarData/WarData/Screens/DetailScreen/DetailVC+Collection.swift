@@ -9,14 +9,14 @@ import UIKit
 
 extension DetailViewController {
     
-    func setCollectionView() {
+    func setDetailCollectionView() {
         detailCollection = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         detailCollection?.delegate = self
         detailCollection?.dataSource = self
         detailCollection?.backgroundColor = .clear
         detailCollection?.translatesAutoresizingMaskIntoConstraints = false
         //register cell
-        detailCollection?.register(DetailCollectionCell.self, forCellWithReuseIdentifier: DetailCollectionCell.identCell)
+        detailCollection?.register(DetailCollectionCell.self, forCellWithReuseIdentifier: DetailCollectionCell.cellID)
         view.addSubview(detailCollection ?? UICollectionView())
     }
     
@@ -31,7 +31,7 @@ extension DetailViewController {
         
         let item = CompositionalLayout.createItem(width: .fractionalWidth(1.0), height: .fractionalHeight(1.0), spacing: 5)
                 
-        let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.45), height: .fractionalHeight(0.8), item: item, count: 1)
+        let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.4), height: .fractionalHeight(0.8), item: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 3, leading: 10, bottom: 10, trailing: 3)
         section.interGroupSpacing = 10
@@ -45,12 +45,12 @@ extension DetailViewController {
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return equipArray.count 
+        return equipmentsFilterData.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionCell.identCell, for: indexPath) as? DetailCollectionCell else {return UICollectionViewCell()}
-        cell.equipmentFilterData = equipArray[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionCell.cellID, for: indexPath) as? DetailCollectionCell else {return UICollectionViewCell()}
+        cell.equipmentFilterData = equipmentsFilterData[indexPath.item]
         return cell
     }
     

@@ -9,31 +9,30 @@ import UIKit
 
 class HumanViewController: UIViewController {
     
+    var collectionView : UICollectionView?
+    var personnelData: PersonnelData?
+    var personnelDataObject: PersonnelDataObject?
+    var itemsData: [HumanItemData] = [] {
+        didSet {
+            reloadPageData()
+        }
+    }
     private let backgroundImageView = UIImageView()
     private let previousDayButton = UIButton(type: .system)
     private let nextDayButton = UIButton(type: .system)
-    private var stack = UIStackView()
+    private var stackHumanData = UIStackView()
     private var dateLabel = UILabel()
     private var indexPersonnale = 0
-    
-    var collectionView : UICollectionView?
-    var personnelData: PersonnelData?
-    var personalDatum: PersonnelDataObject?
-    var itemsData: [HumanItemData] = [] {
-        didSet {
-            configureScreen()
-        }
-    }
 
 //MARK: - Life cycle:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
-        setCollectionView()
+        configureHumanScreenView()
+        setHumanCollectionView()
         setDateLabel()
         setButtons()
-        setStack()
+        setStackHumanData()
         setConstraints()
         configureItemData()
     }
@@ -45,27 +44,27 @@ class HumanViewController: UIViewController {
             guard indexPersonnale > 0 else {return}
             indexPersonnale -= 1
             if indexPersonnale == 0 {
-                personalDatum = personnelData?[indexPersonnale]
-                itemsData =  PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: nil)
+                personnelDataObject = personnelData?[indexPersonnale]
+                itemsData =  PrepareDataManager.mapPersonnelDataToHumanItem(personnelDataObject, previousDay: nil)
             } else {
-                personalDatum = personnelData?[indexPersonnale]
-                itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexPersonnale-1])
+                personnelDataObject = personnelData?[indexPersonnale]
+                itemsData = PrepareDataManager.mapPersonnelDataToHumanItem(personnelDataObject, previousDay: personnelData?[indexPersonnale-1])
             }
             
         } else {
             
-            guard indexPersonnale < giveMaxIndex() else {return}
+            guard indexPersonnale < getMaxIndex() else {return}
             indexPersonnale += 1
-            personalDatum = personnelData?[indexPersonnale]
-            itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexPersonnale-1])
+            personnelDataObject = personnelData?[indexPersonnale]
+            itemsData = PrepareDataManager.mapPersonnelDataToHumanItem(personnelDataObject, previousDay: personnelData?[indexPersonnale-1])
         }
     }
     
 //MARK: - private Functions:
         
-    private func setView() {
-        title = "Особовий склад"
-        backgroundImageView.image = ImageConstants.backgroundHuman
+    private func configureHumanScreenView() {
+        title = DetailPageTitleConstants.titleScreenHuman
+        backgroundImageView.image = ImageConstants.backgroundHumanScreen
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backgroundImageView)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -74,24 +73,24 @@ class HumanViewController: UIViewController {
     }
     
     private func configureItemData() {
-        guard let index = personnelData?.firstIndex(where: {$0.date == personalDatum?.date}) else {return}
+        guard let index = personnelData?.firstIndex(where: {$0.date == personnelDataObject?.date}) else {return}
         indexPersonnale = index
         let indexRight = indexPersonnale == 0 ? 0 : indexPersonnale - 1
-        itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexRight])
+        itemsData = PrepareDataManager.mapPersonnelDataToHumanItem(personnelDataObject, previousDay: personnelData?[indexRight])
     }
     
-    private func configureScreen() {
-        dateLabel.text = personalDatum?.date
+    private func reloadPageData() {
+        dateLabel.text = personnelDataObject?.date
         collectionView?.reloadData()
     }
     
-    private func setStack() {
-        stack = UIStackView(arrangedSubviews: [previousDayButton, dateLabel, nextDayButton])
-        stack.axis = .horizontal
-        stack.spacing = 20
-        stack.distribution = .fillProportionally
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(stack)
+    private func setStackHumanData() {
+        stackHumanData = UIStackView(arrangedSubviews: [previousDayButton, dateLabel, nextDayButton])
+        stackHumanData.axis = .horizontal
+        stackHumanData.spacing = 20
+        stackHumanData.distribution = .fillProportionally
+        stackHumanData.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackHumanData)
     }
     
     private func setDateLabel() {
@@ -113,7 +112,7 @@ class HumanViewController: UIViewController {
         nextDayButton.addTarget(self, action: #selector(changeDay(_:)), for: .touchUpInside)
     }
     
-    private func giveMaxIndex() -> Int {
+    private func getMaxIndex() -> Int {
         guard let personnelData = personnelData else {return 0}
         let maxIndex = personnelData.count - 1
         return maxIndex
@@ -132,12 +131,12 @@ class HumanViewController: UIViewController {
             collView.topAnchor.constraint(equalTo: view.topAnchor),
             collView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collView.bottomAnchor.constraint(equalTo: stack.topAnchor),
+            collView.bottomAnchor.constraint(equalTo: stackHumanData.topAnchor),
             
-            stack.heightAnchor.constraint(equalToConstant: 50),
-            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            stack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stackHumanData.heightAnchor.constraint(equalToConstant: 50),
+            stackHumanData.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            stackHumanData.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            stackHumanData.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
             nextDayButton.widthAnchor.constraint(equalTo: previousDayButton.widthAnchor),
             nextDayButton.widthAnchor.constraint(equalToConstant: 50)

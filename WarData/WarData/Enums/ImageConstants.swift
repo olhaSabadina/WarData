@@ -9,8 +9,8 @@ import UIKit
 
 enum ImageConstants {
     //Images for GeneralViewController
-    static let background  = UIImage(named: "backgroundImage")
-    static let backgroundHuman  = UIImage(named: "backHuman")
+    static let backgroundForMainDetailScreens  = UIImage(named: "backgroundImage")
+    static let backgroundHumanScreen  = UIImage(named: "backHuman")
 }
 
 enum ImageForPersonnel: String, CaseIterable {

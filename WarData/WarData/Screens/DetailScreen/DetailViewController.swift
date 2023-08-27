@@ -9,6 +9,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var detailCollection: UICollectionView?
+    var filterTypeValue = EquipmentUa.aircrafts
+    var equipmentsFilterData = [EquipmentFilterData]() {
+        didSet {
+            detailCollection?.reloadData()
+        }
+    }
     private let backgroundImageView = UIImageView()
     private let modelLabel = UILabel()
     private let lossesLabel = UILabel()
@@ -16,27 +23,19 @@ class DetailViewController: UIViewController {
     private var infoStack = UIStackView()
     private var equipmentData: EquipmentData?
     private let networkManager = NetworkManager()
-    
-    var detailCollection: UICollectionView?
-    var filterTypeValue = EquipmentUa.aircrafts
-    var equipArray = [EquipmentFilterData]() {
-        didSet {
-            detailCollection?.reloadData()
-        }
-    }
  
 //MARK: - Life cycle:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setCollectionView()
+        setupDetailView()
+        setDetailCollectionView()
         setInfoStack()
         getDataForCollection()
         setConstraints()
     }
     
-//MARK: - Function:
+//MARK: - open Function:
     func selValueForStackLabel(data: EquipmentFilterData?) {
         guard let data = data else {return}
         modelLabel.text = data.model
@@ -48,15 +47,15 @@ class DetailViewController: UIViewController {
     
     private func getDataForCollection() {
         equipmentData = networkManager.fetchData(resource: .equipment, of: EquipmentData.self)
-        equipArray = PrepareDataManager.prepareEquipmentData(equipmentData, typeEquipment: filterTypeValue)
-        selValueForStackLabel(data: equipArray.first)
+        equipmentsFilterData = PrepareDataManager.mapEquipmentDataForFilterData(equipmentData, typeEquipment: filterTypeValue)
+        selValueForStackLabel(data: equipmentsFilterData.first)
     }
 
-    private func setupView() {
-        backgroundImageView.image = ImageConstants.background
+    private func setupDetailView() {
+        backgroundImageView.image = ImageConstants.backgroundForMainDetailScreens
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(backgroundImageView)
-        title = Constants.titleScreenEquipment
+        title = DetailPageTitleConstants.titleScreenEquipment
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.isHidden = false
@@ -71,7 +70,7 @@ class DetailViewController: UIViewController {
         }
         for (index, value) in labelsArray.enumerated() {
             let titleLabel = UILabel()
-            titleLabel.text = Constants.arrayLabel[index]
+            titleLabel.text = DetailPageTitleConstants.arrayLabel[index]
             titleLabel.font = UIFont.digiFont(ofSize: 18)
             titleLabel.textAlignment = .right
             titleLabel.textColor = .yellow

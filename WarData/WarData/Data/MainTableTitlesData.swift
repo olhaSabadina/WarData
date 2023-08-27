@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MainTableTitles: String, CaseIterable {
+enum MainTableTitlesData: String, CaseIterable {
     case personnel = "Ліквідовано загарбників"
     case aircraft = "Літаків"
     case helicopter = "Гелікоптерів"
@@ -23,7 +23,7 @@ enum MainTableTitles: String, CaseIterable {
     case cruiseMissiles = "Крилаті ракети"
     
    static var titleArray: [String] {
-        return MainTableTitles.allCases.map({$0.rawValue})
+        return MainTableTitlesData.allCases.map({$0.rawValue})
     }
 }
 

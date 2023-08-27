@@ -9,11 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    private let networkManager = NetworkManager()
-    private var mainData: MainData?
-    private var mainDataObject: MainDataObject?
-    private var datePickerView: DatePickerView?
-    private var titleArray = MainTableTitles.titleArray
     let backgroundImageView = UIImageView()
     let mainTable = UITableView()
     var dateLabel = UILabel()
@@ -25,13 +20,18 @@ class MainViewController: UIViewController {
             mainTable.reloadData()
         }
     }
+    private let networkManager = NetworkManager()
+    private var mainData: MainData?
+    private var mainDataObject: MainDataObject?
+    private var datePickerView: DatePickerView?
+    private var mainTableTitlesData = MainTableTitlesData.titleArray
 
 //MARK: - Life Cycle:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configView()
-        getDataForTable()
+        configureMainScreenView()
+        givDataForTable()
         setConstreints()
         setTargetForDateLabel()
     }
@@ -39,8 +39,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
-        dateLabel.cornerRadius(radius: 20, backColor: .black)
-        dayLabel.borderRadius(radius: 15, layerColor: .lightGray, width: 1)
+        configureDateAndDayLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,12 +55,13 @@ class MainViewController: UIViewController {
     
     @objc func openDatePicker(sender:UITapGestureRecognizer) {
         datePickerView = DatePickerView(frame: self.view.frame)
-        datePickerView?.datePickerSelectDate = mainDataObject?.date.transformStringToDate()
-        datePickerView?.maximumDate = mainData?.last?.date.transformStringToDate()
-        datePickerView?.minimumDate = mainData?.first?.date.transformStringToDate()
-        datePickerView?.cancelButton.addTarget(self, action: #selector(closeDatePickerView), for: .touchUpInside)
-        datePickerView?.okButton.addTarget(self, action: #selector(pushDateFromPicker), for: .touchUpInside)
-        view.addSubview(datePickerView ?? UIView())
+        guard let datePickerView = datePickerView else {return}
+        datePickerView.datePickerSelectDate = mainDataObject?.date.transformStringToDate()
+        datePickerView.maximumDate = mainData?.last?.date.transformStringToDate()
+        datePickerView.minimumDate = mainData?.first?.date.transformStringToDate()
+        datePickerView.cancelButton.addTarget(self, action: #selector(closeDatePickerView), for: .touchUpInside)
+        datePickerView.okButton.addTarget(self, action: #selector(pushDateFromPicker), for: .touchUpInside)
+        view.addSubview(datePickerView)
     }
     
     @objc func pushDateFromPicker() {
@@ -74,6 +74,11 @@ class MainViewController: UIViewController {
     }
     
 //MARK: - private Function:
+    
+    private func configureDateAndDayLabel() {
+        dateLabel.cornerRadius(radius: 20, backColor: .black)
+        dayLabel.borderRadius(radius: 15, layerColor: .lightGray, width: 1)
+    }
     
     private func findMainDataObjectForDate(dateString: String) {
         mainDataObject = mainData?.first(where: {$0.date == dateString})
@@ -91,13 +96,12 @@ class MainViewController: UIViewController {
     }
     
     private func createRowData() {
-        rowData = PrepareDataManager.prepareDataToArray(titleArray, mainDataObject: mainDataObject, personnelDatum: personelDatum)
+        rowData = PrepareDataManager.mapMainDataToRowData(mainTableTitlesData, mainDataObject: mainDataObject, personnelDatum: personelDatum)
         dateLabel.text = mainDataObject?.date
-        let text = "Day \(mainDataObject?.day ?? 0) of war"
-        dayLabel.text = text
+        dayLabel.text = "Day \(mainDataObject?.day ?? 0) of war"
     }
     
-    private func getDataForTable() {
+    private func givDataForTable() {
         mainData = networkManager.fetchData(resource: .main, of: MainData.self)
         personnelData = networkManager.fetchData(resource: .personnel, of: PersonnelData.self)
         mainDataObject = mainData?.last
@@ -111,7 +115,3 @@ class MainViewController: UIViewController {
             dateLabel.addGestureRecognizer(tap)
     }
 }
-    
-    
-
-

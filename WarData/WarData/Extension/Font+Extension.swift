@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIFont {
-    class func digiFont(ofSize size: CGFloat) -> UIFont {
+    static func digiFont(ofSize size: CGFloat) -> UIFont {
         let digiFont = UIFont(name: "DS-Digital-Bold", size: size) ?? .systemFont(ofSize: size)
         return digiFont
     }

@@ -38,7 +38,7 @@ struct MainDataObject: Codable {
     
     var mainDataObjectArrayForShow: [String?] {
         var result: [String?] = []
-        for i in MainTableTitles.allCases {
+        for i in MainTableTitlesData.allCases {
             var value: String? = ""
             switch i {
             case .personnel:

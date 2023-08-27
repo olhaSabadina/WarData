@@ -9,14 +9,14 @@ import UIKit
 
 extension HumanViewController {
     
-    func setCollectionView() {
+    func setHumanCollectionView() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.backgroundColor = .clear
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         //register cell
-        collectionView?.register(HumanCollectionCell.self, forCellWithReuseIdentifier: HumanCollectionCell.identCell)
+        collectionView?.register(HumanCollectionCell.self, forCellWithReuseIdentifier: HumanCollectionCell.cellID)
         view.addSubview(collectionView ?? UICollectionView())
     }
     
@@ -34,7 +34,7 @@ extension HumanViewController {
         
         let groupHeight = UIScreen.main.bounds.height/1.45
         
-        let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.89), height: .absolute(groupHeight), item: item, count: 1)
+        let group = CompositionalLayout.createGroupeCount(aligment: .horizontal, width: .fractionalWidth(0.84), height: .absolute(groupHeight), item: item, count: 1)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 16)
         section.interGroupSpacing = 10
@@ -52,9 +52,8 @@ extension HumanViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HumanCollectionCell.identCell, for: indexPath) as? HumanCollectionCell else {return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HumanCollectionCell.cellID, for: indexPath) as? HumanCollectionCell else {return UICollectionViewCell()}
         cell.itemData = itemsData[indexPath.item]
         return cell
     }
 }
-

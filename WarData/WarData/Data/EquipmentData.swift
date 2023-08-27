@@ -49,5 +49,3 @@ enum Manufacturer: String, Codable {
     case theCzechRepublic = "the Czech Republic"
     case theSovietUnion = "the Soviet Union"
 }
-
-
