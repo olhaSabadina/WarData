@@ -8,7 +8,6 @@
 import Foundation
 
 public enum WarDataErrors: Error {
-    
     case badURL
     case invalidData
     case responseStatusCodeError

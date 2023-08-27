@@ -9,14 +9,14 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    private let backgroundImageView = UIImageView()
+    private let modelLabel = UILabel()
+    private let lossesLabel = UILabel()
+    private let manufacturerLabel = UILabel()
+    private var infoStack = UIStackView()
+    private var equipmentData: EquipmentData?
+    private let networkManager = NetworkManager()
     var detailCollection: UICollectionView?
-    let backgroundImageView = UIImageView()
-    let modelLabel = UILabel()
-    let lossesLabel = UILabel()
-    let manufacturerLabel = UILabel()
-    var infoStack = UIStackView()
-    let networkManager = NetworkManager()
-    var equipmentData: EquipmentData?
     var filterTypeValue = EquipmentUa.aircrafts
     var equipArray = [EquipmentFilterData]() {
         didSet {
@@ -24,7 +24,6 @@ class DetailViewController: UIViewController {
         }
     }
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -34,7 +33,14 @@ class DetailViewController: UIViewController {
         setConstraints()
     }
     
-    func getDataForCollection() {
+    func selValueForStackLabel(data: EquipmentFilterData?) {
+        guard let data = data else {return}
+        modelLabel.text = data.model
+        lossesLabel.text = "\(data.losses)"
+        manufacturerLabel.text = data.manufacture
+    }
+    
+    private func getDataForCollection() {
         equipmentData = networkManager.fetchData(resource: .equipment, of: EquipmentData.self)
         equipArray = PrepareDataManager.prepareEquipmentData(equipmentData, typeEquipment: filterTypeValue)
         selValueForStackLabel(data: equipArray.first)
@@ -51,7 +57,7 @@ class DetailViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    func setInfoStack() {
+    private func setInfoStack() {
         let labelsArray = [modelLabel, manufacturerLabel, lossesLabel]
         labelsArray.forEach { label in
             label.font = UIFont(name: "DS-Digital-Bold", size: 25)
@@ -70,20 +76,10 @@ class DetailViewController: UIViewController {
             stackH.distribution = .fillEqually
             infoStack.addArrangedSubview(stackH)
         }
-        //infoStack.backgroundColor = .gray.withAlphaComponent(0.5)
-        //infoStack.borderRadius(radius: 10, layerColor: .darkGray, width: 1)
         infoStack.axis = .vertical
         infoStack.spacing = 10
-        //infoStack.distribution = .fillEqually
         infoStack.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(infoStack)
-    }
-    
-    func selValueForStackLabel(data: EquipmentFilterData?) {
-        guard let data = data else {return}
-        modelLabel.text = data.model
-        lossesLabel.text = "\(data.losses)"
-        manufacturerLabel.text = data.manufacture
     }
     
     private func setConstraints() {
@@ -105,7 +101,4 @@ class DetailViewController: UIViewController {
             infoStack.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
     }
-
-    
-
 }

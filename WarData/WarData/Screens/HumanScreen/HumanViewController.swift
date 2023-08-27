@@ -9,15 +9,15 @@ import UIKit
 
 class HumanViewController: UIViewController {
     
-    let backgroundImageView = UIImageView()
+    private let backgroundImageView = UIImageView()
+    private let previousDayButton = UIButton(type: .system)
+    private let nextDayButton = UIButton(type: .system)
+    private var stack = UIStackView()
+    private var dateLabel = UILabel()
+    private var indexPersonnale = 0
     var collectionView : UICollectionView?
-    var stack = UIStackView()
-    var dateLabel = UILabel()
-    let previousDayButton = UIButton(type: .system)
-    let nextDayButton = UIButton(type: .system)
     var personnelData: PersonnelData?
     var personalDatum: PersonnelDatum?
-    var indexPersonnale = 0
     var itemsData: [HumanItemData] = [] {
         didSet {
             configureScreen()
@@ -57,7 +57,6 @@ class HumanViewController: UIViewController {
             itemsData = PrepareDataManager.preparePersonnelArray(personalDatum, previousDay: personnelData?[indexPersonnale-1])
         }
     }
-    
     
 //MARK: - private Functions:
         

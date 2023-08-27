@@ -10,16 +10,16 @@ import UIKit
 class MainViewController: UIViewController {
     
     private let networkManager = NetworkManager()
+    private var mainData: MainData?
+    private var mainDatum: MainDatum?
+    private var datePickerView: DatePickerView?
+    private var titleArray = MainTableTitles.titleArray
     let backgroundImageView = UIImageView()
     let mainTable = UITableView()
     var dateLabel = UILabel()
     var dayLabel = UILabel()
-    var mainData: MainData?
-    var mainDatum: MainDatum?
     var personnelData: PersonnelData?
     var personelDatum: PersonnelDatum?
-    var datePickerView: DatePickerView?
-    var titleArray = MainTableTitles.titleArray
     var rowData: [RowData] = [] {
         didSet {
             mainTable.reloadData()
@@ -43,13 +43,14 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
     }
+    
+//MARK: - @objc Function:
     
     @objc func closeDatePickerView() {
         datePickerView?.removeFromSuperview()
     }
-    
-//MARK: - @objc Function:
     
     @objc func openDatePicker(sender:UITapGestureRecognizer) {
         datePickerView = DatePickerView(frame: self.view.frame)
@@ -72,14 +73,19 @@ class MainViewController: UIViewController {
     
 //MARK: - Function:
     
-    func findMainDatumForDate(dateString: String) {
+    private func findMainDatumForDate(dateString: String) {
         mainDatum = mainData?.first(where: {$0.date == dateString})
         personelDatum = personnelData?.first(where: {$0.date == dateString})
         guard mainDatum != nil, personelDatum != nil else {
-            //TODO: olya alert "date not found"
-            print("not date found")
+            alertDataNotFound()
             return
         }
+    }
+    
+    private func alertDataNotFound() {
+        let alert = UIAlertController(title: "Відсутні дані", message: "перевірте інтернет зʼєднання", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .destructive))
+        present(alert, animated: true)
     }
     
     private func createRowData() {

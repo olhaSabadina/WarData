@@ -11,16 +11,15 @@ class MainTableCell: UITableViewCell {
     
     static let cellID = "MainTableCell"
     
-    let nameEquipmentLabel = UILabel()
-    let numberOfLossesLabel = UILabel()
-    let imageEquipmentImageView = UIImageView()
-    var stack = UIStackView()
+    private let nameEquipmentLabel = UILabel()
+    private let numberOfLossesLabel = UILabel()
+    private let imageEquipmentImageView = UIImageView()
+    private var stack = UIStackView()
     var rowData: RowData? {
         didSet{
             configureCell()
         }
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,15 +34,7 @@ class MainTableCell: UITableViewCell {
         backgroundColor = .clear
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-    
-    func setStackView() {
+   private func setStackView() {
         stack = UIStackView(arrangedSubviews: [nameEquipmentLabel, imageEquipmentImageView, numberOfLossesLabel])
         stack.axis = .horizontal
         stack.spacing = 20
@@ -52,7 +43,7 @@ class MainTableCell: UITableViewCell {
         addSubview(stack)
     }
     
-    func setStackLables() {
+    private func setStackLables() {
         nameEquipmentLabel.textAlignment = .right
         nameEquipmentLabel.numberOfLines = 2
         nameEquipmentLabel.adjustsFontSizeToFitWidth = true
@@ -67,18 +58,18 @@ class MainTableCell: UITableViewCell {
         numberOfLossesLabel.font = UIFont(name: "DS-Digital-Bold", size: 30)
     }
     
-    func configureCell() {
+    private func configureCell() {
         nameEquipmentLabel.text = rowData?.title
         numberOfLossesLabel.text = rowData?.value
         imageEquipmentImageView.image = UIImage(named: rowData?.image ?? "no-photo")
     }
     
-    func setStackImage() {
+    private func setStackImage() {
         imageEquipmentImageView.contentMode = .scaleAspectFit
         imageEquipmentImageView.backgroundColor = .gray.withAlphaComponent(0.3)
     }
     
-    func setConstreints() {
+    private func setConstreints() {
         NSLayoutConstraint.activate([
             
             stack.topAnchor.constraint(equalTo: topAnchor, constant: 2),

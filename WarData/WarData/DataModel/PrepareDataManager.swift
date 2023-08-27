@@ -50,7 +50,6 @@ struct PrepareDataManager {
         return resultRowData
     }
     
-    
     static func preparePersonnelArray(_ personnalDatum: PersonnelDatum?, previousDay: PersonnelDatum?) -> [HumanItemData] {
         var array = [HumanItemData]()
         guard let personnalDatum = personnalDatum else { return array}

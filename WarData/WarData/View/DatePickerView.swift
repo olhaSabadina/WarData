@@ -1,17 +1,17 @@
 //
-//  DatePicker View.swift
-//  CurrencyConverter
+//  DatePickerView.swift
+//  WarData
 //
-//  Created by Olya Sabadina on 2023-05-08.
+//  Created by Olga Sabadina on 26.08.2023.
 //
 
 import UIKit
 
 class DatePickerView: UIView {
     
-    var view = UIView()
+    private var view = UIView()
+    private let titleLabel = UILabel()
     let datePicker = UIDatePicker()
-    let titleLabel = UILabel()
     let okButton = UIButton(type: .system)
     let cancelButton = UIButton(type: .system)
     var minimumDate: Date? {
@@ -65,7 +65,7 @@ class DatePickerView: UIView {
         view.layer.masksToBounds = false
     }
     
-    func setBlurEffect() {
+    private func setBlurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterialLight )
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
@@ -102,7 +102,7 @@ class DatePickerView: UIView {
         datePicker.date = date
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         NSLayoutConstraint.activate([
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
             view.centerYAnchor.constraint(equalTo: centerYAnchor),

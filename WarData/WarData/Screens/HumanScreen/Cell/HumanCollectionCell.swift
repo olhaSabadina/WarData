@@ -11,11 +11,11 @@ class HumanCollectionCell: UICollectionViewCell {
    
     static var identCell = "HumanCollectionCell"
     
-    let imageView = UIImageView()
-    let dayLabel = UILabel()
-    let valueLabel = UILabel()
-    let dailyLoss = UILabel()
-    var stack = UIStackView()
+    private let imageView = UIImageView()
+    private let dayLabel = UILabel()
+    private let valueLabel = UILabel()
+    private let dailyLoss = UILabel()
+    private var stack = UIStackView()
     var itemData: HumanItemData? {
         didSet {
             setValueForCell()
@@ -32,7 +32,7 @@ class HumanCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setValueForCell() {
+    private func setValueForCell() {
         guard let itemData = itemData else {return}
         imageView.image = UIImage(named: itemData.image)
         dayLabel.attributedText = "день \(itemData.day)".setAttributeForSymbols(20, count: 5)
@@ -48,7 +48,7 @@ class HumanCollectionCell: UICollectionViewCell {
         setStack()
     }
     
-    func setStack() {
+    private func setStack() {
         stack = UIStackView(arrangedSubviews: [valueLabel,dailyLoss, dayLabel])
         stack.axis = .vertical
         stack.spacing = 20
@@ -57,13 +57,13 @@ class HumanCollectionCell: UICollectionViewCell {
         addSubview(stack)
     }
     
-    func setDayLabel() {
+    private func setDayLabel() {
         dayLabel.font = UIFont(name: "DS-Digital-Bold", size: 26)
         dayLabel.textAlignment = .center
         dayLabel.textColor = .white
     }
     
-    func setValueLabel() {
+    private func setValueLabel() {
         dailyLoss.font = .systemFont(ofSize: 16)
         dailyLoss.textColor = .white
         dailyLoss.textAlignment = .center
@@ -94,5 +94,4 @@ class HumanCollectionCell: UICollectionViewCell {
             stack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15)
         ])
     }
-    
 }

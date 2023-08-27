@@ -22,7 +22,6 @@ extension DetailViewController {
     }
     
     private func createLayout() -> UICollectionViewLayout {
-        
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, leyoutEnvironment)-> NSCollectionLayoutSection? in
                 return self.createDetailSection()
             }
